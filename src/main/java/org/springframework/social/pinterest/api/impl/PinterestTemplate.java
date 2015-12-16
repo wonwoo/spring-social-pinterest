@@ -65,86 +65,27 @@ public class PinterestTemplate extends AbstractOAuth2ApiBinding implements Pinte
 	@Override
 	protected void configureRestTemplate(RestTemplate restTemplate) {
 		restTemplate.setErrorHandler(new PinterestErrorHandler());
-
-		// List<HttpMessageConverter<?>> converters =
-		// restTemplate.getMessageConverters();
-		// for (HttpMessageConverter<?> converter : converters) {
-		// if (converter instanceof MappingJackson2HttpMessageConverter) {
-		// MappingJackson2HttpMessageConverter jsonConverter =
-		// (MappingJackson2HttpMessageConverter) converter;
-		// jsonConverter.setObjectMapper(new ObjectMapper());
-		// jsonConverter.setSupportedMediaTypes(Arrays.asList(
-		// new MediaType("application", "json",
-		// MappingJackson2HttpMessageConverter.DEFAULT_CHARSET),
-		// new MediaType("text", "html",
-		// MappingJackson2HttpMessageConverter.DEFAULT_CHARSET)));
-		// }
-		// }
 	}
 
-	@Override
-	public <T> ResponseEntity<T> getExchange(String url, ParameterizedTypeReference<T> responseType) {
-		return getRestTemplate().exchange(getBaseUrl() + url, HttpMethod.GET, null, responseType);
-	}
-	
 	@Override
 	public <T> ResponseEntity<T> getExchange(URI uri, ParameterizedTypeReference<T> responseType) {
 		return getRestTemplate().exchange(uri, HttpMethod.GET, null, responseType);
 	}
 
 	@Override
-	public <T> ResponseEntity<T> getExchange(String url, ParameterizedTypeReference<T> responseType,
-			Object... uriVariables) {
-		return getRestTemplate().exchange(getBaseUrl() + url, HttpMethod.GET, null, responseType, uriVariables);
+	public <T> ResponseEntity<T> postExchange(URI uri, HttpEntity<?> requestEntity,
+			ParameterizedTypeReference<T> responseType) {
+		return getRestTemplate().exchange(uri, HttpMethod.POST, requestEntity, responseType);
 	}
 
 	@Override
-	public <T> ResponseEntity<T> exchange(String url, HttpMethod method, HttpEntity<?> requestEntity,
-			ParameterizedTypeReference<T> responseType, MultiValueMap<String, Object> parameters) {
-		URI uri = new PinterestURIBuilder(getBaseUrl() + url).addAll(parameters).build();
-		ResponseEntity<T> responseEntity = getRestTemplate().exchange(uri, method, requestEntity, responseType);
-		return responseEntity;
-	}
-
-	public <T> ResponseEntity<T> exchange(URI uri, HttpMethod method, HttpEntity<?> requestEntity,
-			ParameterizedTypeReference<T> responseType, MultiValueMap<String, Object> parameters) {
-		ResponseEntity<T> responseEntity = getRestTemplate().exchange(uri, method, requestEntity, responseType);
-		return responseEntity;
-	}
-
-	@Override
-	public <T> ResponseEntity<T> postExchange(String url, HttpEntity<?> requestEntity,
-			ParameterizedTypeReference<T> responseType, MultiValueMap<String, Object> parameters) {
-		return exchange(url, HttpMethod.POST, requestEntity, responseType, parameters);
-	}
-
-	@Override
-	public <T> ResponseEntity<T> patchExchange(String url, HttpEntity<?> requestEntity,
-			ParameterizedTypeReference<T> responseType, Map<String, Object> parameters) {
-		return getRestTemplate().exchange(getBaseUrl() + url, HttpMethod.PATCH, requestEntity, responseType,
-				parameters);
+	public <T> ResponseEntity<T> patchExchange(URI uri, HttpEntity<?> requestEntity,
+			ParameterizedTypeReference<T> responseType) {
+		return getRestTemplate().exchange(uri, HttpMethod.PATCH, requestEntity, responseType);
 	}
 
 	@Override
 	public void delete(String url, Object... urlVariables) {
 		getRestTemplate().delete(getBaseUrl() + url, urlVariables);
-		// public <T> ResponseEntity<T> exchange(String url, HttpMethod method,
-		// HttpEntity<?> requestEntity, Class<T> responseType, Object...
-		// uriVariables)
-		// HttpHeaders headers = new HttpHeaders();
-		// headers.setContentType(MediaType.APPLICATION_XML);
-		// MultiValueMap<String, String> headers = new
-		// LinkedMultiValueMap<String,String>();
-		// headers.add("content_type", MediaType.TEXT_HTML_VALUE);
-		// HttpEntity<MultiValueMap<String, String>> httpEntity = new
-		// HttpEntity<>(headers);
-		// ResponseEntity<String> a = getRestTemplate().exchange(getBaseUrl() +
-		// url, HttpMethod.DELETE, httpEntity, String.class,
-		// urlVariables);
-		// System.out.println(a);
-		// System.out.println(a.getBody());
-		// System.out.println(a.getHeaders());
-		// System.out.println(a.getStatusCode());
-
 	}
 }

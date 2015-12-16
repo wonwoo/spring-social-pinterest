@@ -1,6 +1,7 @@
 package org.springframework.social.pinterest.api.impl;
 
 import org.springframework.social.MissingAuthorizationException;
+import org.springframework.util.ObjectUtils;
 
 /**
  * Created by wonwoo on 15. 12. 15..
@@ -17,4 +18,17 @@ public class AbstractPinterestOperations {
             throw new MissingAuthorizationException("pinterest");
         }
     }
+
+    public String getBaseUrl() {
+        return "https://api.pinterest.com/v1/";
+    }
+
+    protected void requiredParameters(Object... parameters) {
+        for(Object obj : parameters){
+            if(obj == null){
+                throw new RequiredParametersException("No Such Parameter Exception");
+            }
+        }
+    }
+
 }

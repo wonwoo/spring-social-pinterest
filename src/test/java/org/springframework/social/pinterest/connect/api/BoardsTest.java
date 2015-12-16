@@ -25,7 +25,7 @@ public class BoardsTest {
 
 	@Test
 	public void createTest() {
-		final Data<Boards> me = pinterest.boardsOperations().create("개발 테스트", null);
+		final Data<Boards> me = pinterest.boardsOperations().create("개발 테스트 보드","");
 		System.out.println(me.getData().getCreated_at());
 		System.out.println(me.getData().getCounts());
 		System.out.println(me.getData().getPrivacy());
@@ -34,17 +34,17 @@ public class BoardsTest {
 	}
 	@Test
 	public void deleteTest() {
-		pinterest.boardsOperations().delete("174303516767217485");
+		pinterest.boardsOperations().delete("174303516767217598");
 	}
 	@Test
 	public void patchTest() {
-		final Data<Boards> data = pinterest.boardsOperations().patch("174303516767217394", "변경", "ggg", "");
+		final Data<Boards> data = pinterest.boardsOperations().patch("174303516767217601", "변경", "ggg", "");
 		System.out.println(data);
 	}
 	
 	@Test
 	public void getTest() {
-		final Data<Boards> data = pinterest.boardsOperations().get("174303516767217394");
+		final Data<Boards> data = pinterest.boardsOperations().get("174303516767217601");
 		System.out.println(data);
 	}
 	

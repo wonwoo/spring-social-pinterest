@@ -22,14 +22,13 @@ public interface BoardsOperations {
 	 * <strong>create board</strong><br>
 	 * <br>
 	 * board name <br>
-	 * fields ex)
-	 * counts,created_at,creator,description,id,image,name,privacy,reason,url
+	 * description
 	 * 
 	 * @param name
-	 * @param fields
+	 * @param description
 	 * @return
 	 */
-	Data<Boards> create(String name, String fields);
+	Data<Boards> create(String name, String description);
 
 	/**
 	 * <strong>create board</strong><br>

@@ -14,21 +14,14 @@ import org.springframework.util.MultiValueMap;
  */
 public interface PinterestRestApi {
 
-	<T> ResponseEntity<T> getExchange(String url, ParameterizedTypeReference<T> responseType);
+    <T> ResponseEntity<T> getExchange(URI uri, ParameterizedTypeReference<T> responseType);
 
-	<T> ResponseEntity<T> getExchange(String url, ParameterizedTypeReference<T> responseType, Object... uriVariables);
+    <T> ResponseEntity<T> postExchange(URI uri, HttpEntity<?> requestEntity,
+                                       ParameterizedTypeReference<T> responseType);
 
-	<T> ResponseEntity<T> exchange(String url, HttpMethod method, HttpEntity<?> requestEntity,
-			ParameterizedTypeReference<T> responseType, MultiValueMap<String, Object> parameters);
+    <T> ResponseEntity<T> patchExchange(URI uri, HttpEntity<?> requestEntity,
+                                               ParameterizedTypeReference<T> responseType);
 
-	<T> ResponseEntity<T> postExchange(String url, HttpEntity<?> requestEntity,
-			ParameterizedTypeReference<T> responseType, MultiValueMap<String, Object> parameters);
-
-	<T> ResponseEntity<T> patchExchange(String url, HttpEntity<?> requestEntity,
-			ParameterizedTypeReference<T> responseType, Map<String, Object> parameters);
-
-	<T> ResponseEntity<T> getExchange(URI uri, ParameterizedTypeReference<T> responseType);
-
-	void delete(String url, Object... urlVariables);
+    void delete(String url, Object... urlVariables);
 
 }

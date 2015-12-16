@@ -1,5 +1,6 @@
 package org.springframework.social.pinterest.api.impl;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.core.ParameterizedTypeReference;
@@ -10,6 +11,7 @@ import org.springframework.social.pinterest.api.PinterestRestApi;
 import org.springframework.social.pinterest.api.User;
 import org.springframework.social.pinterest.api.UserOperations;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriTemplate;
 
 /**
  * Created by wonwoo on 15. 12. 15..
@@ -29,8 +31,11 @@ public class UserTemplate extends AbstractPinterestOperations implements UserOpe
     @Override
     public Data<User> getMe(String fields) {
         requireAuthorization();
-        final ResponseEntity<Data<User>> exchange = pinterestRestApi.getExchange(prefix + "?fields={fields}", new ParameterizedTypeReference<Data<User>>() {
-        },fields);
+        requiredParameters(fields);
+        String url = getBaseUrl() + prefix + "?fields={fields}";
+        URI expanded = new UriTemplate(url).expand(fields);
+        final ResponseEntity<Data<User>> exchange = pinterestRestApi.getExchange(expanded, new ParameterizedTypeReference<Data<User>>() {
+        });
         return exchange.getBody();
     }
 
@@ -42,9 +47,12 @@ public class UserTemplate extends AbstractPinterestOperations implements UserOpe
     @Override
     public Data<List<Boards>> getBoards(String fields) {
         requireAuthorization();
-        final ResponseEntity<Data<List<Boards>>> exchange = pinterestRestApi.getExchange(prefix + "boards?fields={fields}",
+        requiredParameters(fields);
+        String url = getBaseUrl() + prefix + "boards?fields={fields}";
+        URI expanded = new UriTemplate(url).expand(fields);
+        final ResponseEntity<Data<List<Boards>>> exchange = pinterestRestApi.getExchange(expanded,
                 new ParameterizedTypeReference<Data<List<Boards>>>() {
-        },fields);
+        });
         return exchange.getBody();
     }
 
