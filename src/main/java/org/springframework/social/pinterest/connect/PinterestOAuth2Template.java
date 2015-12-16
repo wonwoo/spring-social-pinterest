@@ -1,7 +1,7 @@
 package org.springframework.social.pinterest.connect;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.Arrays;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -10,9 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.social.oauth2.AccessGrant;
 import org.springframework.social.oauth2.OAuth2Template;
 import org.springframework.util.MultiValueMap;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by wonwoo on 15. 12. 15..
@@ -27,7 +24,6 @@ public class PinterestOAuth2Template extends OAuth2Template {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     protected AccessGrant postForAccessGrant(String accessTokenUrl, MultiValueMap<String, String> parameters) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);

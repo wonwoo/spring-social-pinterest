@@ -1,0 +1,2 @@
+http\://www.springframework.org/schema/social/spring-social-pinterest.xsd=org/springframework/social/pinterest/config/xml/spring-social-pinterest-1.1.xsd
+http\://www.springframework.org/schema/social/spring-social-pinterest-1.1.xsd=org/springframework/social/pinterest/config/xml/spring-social-pinterest-1.1.xsd

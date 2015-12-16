@@ -1,0 +1,1 @@
+http\://www.springframework.org/schema/social/pinterest=org.springframework.social.pinterest.config.xml.PinterestNamespaceHandler

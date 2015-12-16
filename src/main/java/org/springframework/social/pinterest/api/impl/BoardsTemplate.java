@@ -35,14 +35,14 @@ public class BoardsTemplate extends AbstractPinterestOperations implements Board
 	@Override
 	public Data<Boards> create(String name, String description, String fields) {
 		requireAuthorization();
-		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("name", name == null ? "" : name);
-		parameters.put("description", description == null ? "" : description);
-		HttpEntity<?> requestEntity = new HttpEntity<Map<String, Object>>(parameters);
-		MultiValueMap<String, Object> getParameters = new LinkedMultiValueMap<String, Object>();
-		getParameters.add("fields", fields);
+		Map<String, Object> body = new HashMap<String, Object>();
+		body.put("name", name == null ? "" : name);
+		body.put("description", description == null ? "" : description);
+		HttpEntity<?> requestEntity = new HttpEntity<Map<String, Object>>(body);
+		MultiValueMap<String, Object> parameters = new LinkedMultiValueMap<String, Object>();
+		parameters.add("fields", fields);
 		return pinterestRestApi.postExchange(prefix, requestEntity, new ParameterizedTypeReference<Data<Boards>>() {
-		}, getParameters).getBody();
+		}, parameters).getBody();
 	}
 
 	@Override
@@ -56,24 +56,18 @@ public class BoardsTemplate extends AbstractPinterestOperations implements Board
 	}
 
 	@Override
-	public void delete(String board) {
-		requireAuthorization();
-		pinterestRestApi.delete(prefix + "{board}/", board);
-	}
-
-	@Override
 	public Data<Boards> patch(String board, String name, String description, String fields) {
 		requireAuthorization();
+		Map<String, Object> body = new HashMap<String, Object>();
+		body.put("name", name == null ? "" : name);
+		body.put("description", description == null ? "" : description);
+		HttpEntity<?> requestEntity = new HttpEntity<Map<String, Object>>(body);
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("name", name == null ? "" : name);
-		parameters.put("description", description == null ? "" : description);
-		HttpEntity<?> requestEntity = new HttpEntity<Map<String, Object>>(parameters);
-		Map<String, Object> getParameters = new HashMap<String, Object>();
-		getParameters.put("fields", fields);
-		getParameters.put("board", board);
+		parameters.put("fields", fields);
+		parameters.put("board", board);
 		return pinterestRestApi
 				.patchExchange(prefix + "{board}/", requestEntity, new ParameterizedTypeReference<Data<Boards>>() {
-				}, getParameters).getBody();
+				}, parameters).getBody();
 	}
 
 	@Override
@@ -107,8 +101,9 @@ public class BoardsTemplate extends AbstractPinterestOperations implements Board
 
 	@Override
 	public Data<List<BoardPin>> getPinNext(String next) {
-		return pinterestRestApi.getExchange(URIBuilder.fromUri(next).build(), new ParameterizedTypeReference<Data<List<BoardPin>>>() {
-		}).getBody();
+		return pinterestRestApi
+				.getExchange(URIBuilder.fromUri(next).build(), new ParameterizedTypeReference<Data<List<BoardPin>>>() {
+				}).getBody();
 	}
 
 	@Override
@@ -119,9 +114,16 @@ public class BoardsTemplate extends AbstractPinterestOperations implements Board
 
 	@Override
 	public Data<List<BoardPin>> getPinCursor(String board, String cursor, Integer limit, String fields) {
+		requireAuthorization();
 		return pinterestRestApi.getExchange(prefix + "{board}/pins/?cursor={cursor}&limit={limit}&fields={fields}",
 				new ParameterizedTypeReference<Data<List<BoardPin>>>() {
 				}, board, cursor, limit, fields).getBody();
+	}
+
+	@Override
+	public void delete(String board) {
+		requireAuthorization();
+		pinterestRestApi.delete(prefix + "{board}/", board);
 	}
 
 }

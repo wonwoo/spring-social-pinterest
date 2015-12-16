@@ -1,23 +1,31 @@
 package org.springframework.social.pinterest.api.impl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.client.ClientHttpResponse;
-import org.springframework.social.*;
-import org.springframework.social.pinterest.api.PinterestError;
-import org.springframework.web.client.DefaultResponseErrorHandler;
+/**
+ * Created by wonwoo on 15. 12. 15..
+ */
+import static org.springframework.social.pinterest.api.PinterestErrors.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-/**
- * Created by wonwoo on 15. 12. 15..
- */
-import static org.springframework.social.pinterest.api.PinterestErrors.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.client.ClientHttpResponse;
+import org.springframework.social.ApiException;
+import org.springframework.social.InsufficientPermissionException;
+import org.springframework.social.NotAuthorizedException;
+import org.springframework.social.RateLimitExceededException;
+import org.springframework.social.ResourceNotFoundException;
+import org.springframework.social.ServerException;
+import org.springframework.social.ServerOverloadedException;
+import org.springframework.social.UncategorizedApiException;
+import org.springframework.social.pinterest.api.PinterestError;
+import org.springframework.web.client.DefaultResponseErrorHandler;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class PinterestErrorHandler extends DefaultResponseErrorHandler {
 

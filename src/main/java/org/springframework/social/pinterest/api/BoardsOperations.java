@@ -148,12 +148,6 @@ public interface BoardsOperations {
 	/**
 	 * 
 	 * @param board
-	 */
-	void delete(String board);
-
-	/**
-	 * 
-	 * @param board
 	 * @param name
 	 * @param description
 	 * @param fields
@@ -161,4 +155,13 @@ public interface BoardsOperations {
 	 */
 	// TODO 501 error
 	Data<Boards> patch(String board, String name, String description, String fields);
+	
+	
+	/**
+	 * <strong>board delete</strong><br>
+	 * boardid
+	 * 
+	 * @param board
+	 */
+	void delete(String board);
 }

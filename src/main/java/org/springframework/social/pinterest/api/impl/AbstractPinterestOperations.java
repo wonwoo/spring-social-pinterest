@@ -14,7 +14,7 @@ public class AbstractPinterestOperations {
 
     protected void requireAuthorization() {
         if (!isAuthorized) {
-            throw new MissingAuthorizationException("daum");
+            throw new MissingAuthorizationException("pinterest");
         }
     }
 }

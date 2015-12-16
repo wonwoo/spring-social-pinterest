@@ -1,11 +1,15 @@
 package org.springframework.social.pinterest.api.impl;
 
+import java.util.List;
+
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
-import org.springframework.social.pinterest.api.*;
+import org.springframework.social.pinterest.api.Boards;
+import org.springframework.social.pinterest.api.Data;
+import org.springframework.social.pinterest.api.PinterestRestApi;
+import org.springframework.social.pinterest.api.User;
+import org.springframework.social.pinterest.api.UserOperations;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
 
 /**
  * Created by wonwoo on 15. 12. 15..

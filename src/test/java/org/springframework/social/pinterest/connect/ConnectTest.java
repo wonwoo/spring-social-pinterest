@@ -31,7 +31,7 @@ public class ConnectTest {
         connectionFactoryRegistry = new ConnectionFactoryRegistry();
         connectionFactoryRegistry.addConnectionFactory(pinterestConnectionFactory);
         oAuth2Parameters = new OAuth2Parameters();
-        oAuth2Parameters.setRedirectUri("https://localhost:8080/daum/callback");
+        oAuth2Parameters.setRedirectUri("https://localhost:8080/pinterest/callback");
         oAuth2Parameters.setScope("read_public,write_public,read_relationships,write_relationships");
     }
 
@@ -46,7 +46,7 @@ public class ConnectTest {
     public void accessTokenTest() throws IOException {
         String code = "7f926bfbfe6156e3";
         OAuth2Operations oAuth2Operations = pinterestConnectionFactory.getOAuthOperations();
-        AccessGrant accessGrant = oAuth2Operations.exchangeForAccess(code, "https://localhost:8080/daum/callback", null);
+        AccessGrant accessGrant = oAuth2Operations.exchangeForAccess(code, "https://localhost:8080/pinterest/callback", null);
         printAcess(accessGrant);
     }
 

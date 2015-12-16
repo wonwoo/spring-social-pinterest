@@ -25,10 +25,11 @@ public class BoardsTest {
 
 	@Test
 	public void createTest() {
-		final Data<Boards> me = pinterest.boardsOperations().create("테트gag엥gagggg", null);
+		final Data<Boards> me = pinterest.boardsOperations().create("개발 테스트", null);
 		System.out.println(me.getData().getCreated_at());
 		System.out.println(me.getData().getCounts());
 		System.out.println(me.getData().getPrivacy());
+		System.out.println(me.getData().getId());
 		System.out.println(me);
 	}
 	@Test
@@ -37,7 +38,7 @@ public class BoardsTest {
 	}
 	@Test
 	public void patchTest() {
-		final Data<Boards> data = pinterest.boardsOperations().patch("174303516767217392", "변경", "ggg", "");
+		final Data<Boards> data = pinterest.boardsOperations().patch("174303516767217394", "변경", "ggg", "");
 		System.out.println(data);
 	}
 	
