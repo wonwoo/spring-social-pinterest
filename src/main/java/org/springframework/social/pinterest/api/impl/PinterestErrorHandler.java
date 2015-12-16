@@ -17,60 +17,59 @@ import java.io.InputStreamReader;
 /**
  * Created by wonwoo on 15. 12. 15..
  */
+import static org.springframework.social.pinterest.api.PinterestErrors.*;
+
 public class PinterestErrorHandler extends DefaultResponseErrorHandler {
 
-    private static final String DAUM_PROVIDER_ID = "daum";
+	private static final String PINTEREST_PROVIDER_ID = "pinterest";
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
+	private Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Override
-    public void handleError(ClientHttpResponse response) throws IOException {
-        String errorString = readResponseJson(response);
-        ObjectMapper mapper = new ObjectMapper();
-        PinterestError error = mapper.readValue(errorString, PinterestError.class);
-        handleFacebookError(response.getStatusCode(), error);
-    }
+	@Override
+	public void handleError(ClientHttpResponse response) throws IOException {
+		String errorString = readResponseJson(response);
+		ObjectMapper mapper = new ObjectMapper();
+		PinterestError error = mapper.readValue(errorString, PinterestError.class);
+		handlePinterestError(response.getStatusCode(), error);
+	}
 
-    void handleFacebookError(HttpStatus statusCode, PinterestError error) {
-        int code = statusCode.value();
-        System.out.println(code);
-//        if (code == ETC) {
-//            throw new ServerException(DAUM_PROVIDER_ID, error.getMessage());
-//        } else if (code == REQUEST_THROTTLED) {
-//            throw new RateLimitExceededException(DAUM_PROVIDER_ID);
-//        } else if (code == NOT_AUTHORIZED_ERROR) {
-//            throw new NotAuthorizedException(DAUM_PROVIDER_ID,error.getMessage());
-//        } else if (code == UNAUTHORIZED ) {
-//            throw new InvalidAuthorizationException(DAUM_PROVIDER_ID, error.getMessage());
-//        } else if (code == ACCESS_DENIED_ERROR) {
-//            throw new InsufficientPermissionException(DAUM_PROVIDER_ID);
-//        } else if (code == MISSING_PARAMETER) {
-//            throw new ApiException(DAUM_PROVIDER_ID, error.getMessage());
-//        } else if (code == REQUEST_TIMEOUT) {
-//            throw new ServerOverloadedException(DAUM_PROVIDER_ID, error.getMessage());
-//        } else if (code == RESOURCE_NOT_FOUND) {
-//            throw new ResourceNotFoundException(DAUM_PROVIDER_ID, error.getMessage());
-//        } else {
-            throw new UncategorizedApiException(DAUM_PROVIDER_ID, error.getMessage(), null);
-//        }
+	void handlePinterestError(HttpStatus statusCode, PinterestError error) {
+		int code = statusCode.value();
+		if (code == SERVER_ERROR || code == SERVER_ERROR2 || code == SERVER_ERROR99) {
+			throw new ServerException(PINTEREST_PROVIDER_ID, error.getMessage());
+		} else if (code == TOO_MANY_REQUESTS) {
+			throw new RateLimitExceededException(PINTEREST_PROVIDER_ID);
+		} else if (code == AUTHORIZATION) {
+			throw new NotAuthorizedException(PINTEREST_PROVIDER_ID, error.getMessage());
+		} else if (code == PERMISSIONS) {
+			throw new InsufficientPermissionException(PINTEREST_PROVIDER_ID);
+		} else if (code == SOMETHING) {
+			throw new ApiException(PINTEREST_PROVIDER_ID, error.getMessage());
+		} else if (code == TIME_OUT) {
+			throw new ServerOverloadedException(PINTEREST_PROVIDER_ID, error.getMessage());
+		} else if (code == NOT_FOUND) {
+			throw new ResourceNotFoundException(PINTEREST_PROVIDER_ID, error.getMessage());
+		} else {
+			throw new UncategorizedApiException(PINTEREST_PROVIDER_ID, error.getMessage(), null);
+		}
 
+	}
 
-    }
-    private String readResponseJson(ClientHttpResponse response) throws IOException {
-        String json = readFully(response.getBody());
-        if (logger.isDebugEnabled()) {
-            logger.debug("Error from daum: " + json);
-        }
-        return json;
-    }
+	private String readResponseJson(ClientHttpResponse response) throws IOException {
+		String json = readFully(response.getBody());
+		if (logger.isDebugEnabled()) {
+			logger.debug("Error from pinterest: " + json);
+		}
+		return json;
+	}
 
-    private String readFully(InputStream in) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-        StringBuilder sb = new StringBuilder();
-        while (reader.ready()) {
-            sb.append(reader.readLine());
-        }
-        return sb.toString();
-    }
+	private String readFully(InputStream in) throws IOException {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+		StringBuilder sb = new StringBuilder();
+		while (reader.ready()) {
+			sb.append(reader.readLine());
+		}
+		return sb.toString();
+	}
 
 }

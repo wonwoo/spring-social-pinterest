@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.springframework.social.pinterest.api.Boards;
 import org.springframework.social.pinterest.api.Pinterest;
 import org.springframework.social.pinterest.api.User;
-import org.springframework.social.pinterest.api.UserData;
+import org.springframework.social.pinterest.api.Data;
 import org.springframework.social.pinterest.api.impl.PinterestTemplate;
 
 import java.util.List;
@@ -27,22 +27,20 @@ public class UserTest {
     @Test
     public void getMe(){
         pinterest = new PinterestTemplate(token,key);
-        final UserData<User> me = pinterest.userOperation().getMe();
+        final Data<User> me = pinterest.userOperation().getMe();
         System.out.println(me.getData().getBio());
         System.out.println(me.getData().getId());
-        System.out.println(me.getData().getImage().get("60x60"));
+        System.out.println(me.getData().getImage().get("60x60").get("url"));
         System.out.println(me);
     }
 
     @Test
     public void getBoards(){
         pinterest = new PinterestTemplate(token,key);
-        final UserData<List<Boards>> boards = pinterest.userOperation().getBoards();
-
+        final Data<List<Boards>> boards = pinterest.userOperation().getBoards();
         for(Boards board : boards.getData()){
-            System.out.println(board.getCounts().getBoards());
+            System.out.println(board.getCounts().getCollaborators());
             System.out.println(board);
         }
-
     }
 }//ASUtqaV-j1ZP1S90Nns0Y9BtHK1yFCAcfv8LnthCtk-Q4UAufgAAAAA

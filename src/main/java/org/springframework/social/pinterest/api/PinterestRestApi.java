@@ -1,37 +1,34 @@
 package org.springframework.social.pinterest.api;
 
+import java.net.URI;
+import java.util.Map;
+
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-
-import java.net.URI;
-import java.util.Map;
+import org.springframework.util.MultiValueMap;
 
 /**
  * Created by wonwoo on 15. 12. 15..
  */
 public interface PinterestRestApi {
 
-    <T> T fetchObject(String url, Class<T> type);
+	<T> ResponseEntity<T> getExchange(String url, ParameterizedTypeReference<T> responseType);
 
-    <T> T fetchObject(URI uri, Class<T> type, Object... urlVariables);
+	<T> ResponseEntity<T> getExchange(String url, ParameterizedTypeReference<T> responseType, Object... uriVariables);
 
-    <T> T fetchObject(String url, Class<T> type, Object... urlVariables);
+	<T> ResponseEntity<T> exchange(String url, HttpMethod method, HttpEntity<?> requestEntity,
+			ParameterizedTypeReference<T> responseType, MultiValueMap<String, Object> parameters);
 
-    <T> T fetchObject(String url, Class<T> type, Map<String, ?> urlVariables);
+	<T> ResponseEntity<T> postExchange(String url, HttpEntity<?> requestEntity,
+			ParameterizedTypeReference<T> responseType, MultiValueMap<String, Object> parameters);
 
-    <T> T post(String url, Object request, Class<T> responseType, Object... urlVariables);
+	<T> ResponseEntity<T> patchExchange(String url, HttpEntity<?> requestEntity,
+			ParameterizedTypeReference<T> responseType, Map<String, Object> parameters);
 
-    <T> T post(String url, Object request, Class<T> type);
+	<T> ResponseEntity<T> getExchange(URI uri, ParameterizedTypeReference<T> responseType);
 
-    <T> ResponseEntity getExchange(String url, ParameterizedTypeReference<T> responseType);
+	void delete(String url, Object... urlVariables);
 
-
-    <T> ResponseEntity<T> getExchange(String url,
-                                      ParameterizedTypeReference<T> responseType, Object... uriVariables);
-
-
-    <T> ResponseEntity<T> getExchange(String url,HttpEntity<?> requestEntity,
-                                      ParameterizedTypeReference<T> responseType, Object... uriVariables);
 }

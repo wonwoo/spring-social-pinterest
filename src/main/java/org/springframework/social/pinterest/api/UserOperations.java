@@ -7,14 +7,12 @@ import java.util.List;
  */
 public interface UserOperations {
 
-    UserData<User> getMe(String fields);
+	Data<User> getMe(String fields);
 
-    UserData<User> getMe();
+	Data<User> getMe();
 
-    UserData<List<Boards>> getBoards(String fields, Integer limit);
+	Data<List<Boards>> getBoards(String fields);
 
-    UserData<List<Boards>> getBoards(String fields);
-
-    UserData<List<Boards>> getBoards();
+	Data<List<Boards>> getBoards();
 
 }

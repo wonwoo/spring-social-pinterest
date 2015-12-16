@@ -23,34 +23,29 @@ public class UserTemplate extends AbstractPinterestOperations implements UserOpe
     }
 
     @Override
-    public UserData<User> getMe(String fields) {
+    public Data<User> getMe(String fields) {
         requireAuthorization();
-        final ResponseEntity<UserData<User>> exchange = pinterestRestApi.getExchange(prefix + "?fields={fields}", new ParameterizedTypeReference<UserData<User>>() {
+        final ResponseEntity<Data<User>> exchange = pinterestRestApi.getExchange(prefix + "?fields={fields}", new ParameterizedTypeReference<Data<User>>() {
         },fields);
         return exchange.getBody();
     }
 
     @Override
-    public UserData<User> getMe() {
+    public Data<User> getMe() {
         return getMe("id,image,username,first_name,last_name,bio,created_at,counts,account_type,url");
     }
 
     @Override
-    public UserData<List<Boards>> getBoards(String fields, Integer limit) {
+    public Data<List<Boards>> getBoards(String fields) {
         requireAuthorization();
-        final ResponseEntity<UserData<List<Boards>>> exchange = pinterestRestApi.getExchange(prefix + "boards?fields={fields}&limit={limit}",
-                new ParameterizedTypeReference<UserData<List<Boards>>>() {
-        },fields,limit);
+        final ResponseEntity<Data<List<Boards>>> exchange = pinterestRestApi.getExchange(prefix + "boards?fields={fields}",
+                new ParameterizedTypeReference<Data<List<Boards>>>() {
+        },fields);
         return exchange.getBody();
     }
 
     @Override
-    public UserData<List<Boards>> getBoards(String fields) {
-        return getBoards(fields, 25);
-    }
-
-    @Override
-    public UserData<List<Boards>> getBoards() {
+    public Data<List<Boards>> getBoards() {
         return getBoards("counts,created_at,creator,description,id,image,name,privacy,reason,url");
     }
 }
