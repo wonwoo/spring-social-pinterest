@@ -60,6 +60,4 @@ public class ConnectTest {
 //        List<String> scopes = objectMapper.readValue(accessGrant.getScope(), List.class);
 //        System.out.println(scopes);
     }
-
-
 }
