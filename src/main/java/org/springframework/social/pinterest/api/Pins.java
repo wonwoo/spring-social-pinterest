@@ -1,12 +1,13 @@
 package org.springframework.social.pinterest.api;
 
 import java.io.Serializable;
+import java.util.Map;
 
 public class Pins extends PinterestObject implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private String attribution;
+	private Map<String,String> attribution;
 	private Creator creator;
 	private String url;
 	private Media media;
@@ -21,7 +22,7 @@ public class Pins extends PinterestObject implements Serializable{
 	private String id;
 	private MetaData metadata;
 
-	public String getAttribution() {
+	public Map<String,String> getAttribution() {
 		return attribution;
 	}
 

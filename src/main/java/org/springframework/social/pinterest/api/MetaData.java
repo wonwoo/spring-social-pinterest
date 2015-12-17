@@ -1,9 +1,19 @@
 package org.springframework.social.pinterest.api;
 
+import java.util.Map;
+
+
+//TODO metadata 수정
 public class MetaData {
 
 	private Place place;
 	private Link link;
+
+	private Map<String,Object> article;
+	private Map<String,Object> movie;
+//	private Map<String,String> place;
+	private Map<String,Object> product;
+	private Map<String,Object> pecipe;
 
 	public static class Link {
 		private String locale;
@@ -131,6 +141,7 @@ public class MetaData {
 		}
 	}
 
+
 	public Place getPlace() {
 		return place;
 	}
@@ -139,13 +150,32 @@ public class MetaData {
 		return link;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("MetaData [place=");
-		builder.append(place);
-		builder.append("]");
-		return builder.toString();
+	public Map<String, Object> getArticle() {
+		return article;
 	}
 
+	public Map<String, Object> getMovie() {
+		return movie;
+	}
+
+	public Map<String, Object> getPecipe() {
+		return pecipe;
+	}
+
+	public Map<String, Object> getProduct() {
+		return product;
+	}
+
+	@Override
+	public String toString() {
+		final StringBuffer sb = new StringBuffer("MetaData{");
+		sb.append("article=").append(article);
+		sb.append(", place=").append(place);
+		sb.append(", link=").append(link);
+		sb.append(", movie=").append(movie);
+		sb.append(", product=").append(product);
+		sb.append(", pecipe=").append(pecipe);
+		sb.append('}');
+		return sb.toString();
+	}
 }

@@ -116,4 +116,43 @@ public interface UserOperations {
 	
 	void unfollowingBoards(String board);
 
+	/*********************************/
+
+	Data<List<Interests>> getfollowingInterests(Integer limit);
+
+	Data<List<Interests>> getfollowingInterestsNext(String next);
+
+	Data<List<Interests>> getfollowingInterestsCursor(String cursor, Integer limit);
+
+
+	/*********************************/
+	Data<List<User>> getfollowingUsers(Integer limit, String fields);
+
+	Data<List<User>> getfollowingUsers(Integer limit);
+
+	Data<List<User>> getfollowingUsersNext(String next);
+
+	Data<List<User>> getfollowingUsersCursor(String cursor, Integer limit, String fields);
+
+	Data<List<User>> getfollowingUsersCursor(String cursor, Integer limit);
+
+	/*********************************/
+
+	Data<String> followingUsers(String user);
+
+	void unfollowingUsers(String user);
+
+	/*********************************/
+
+	Data<List<Pins>> getLike(Integer limit, String fields);
+
+	Data<List<Pins>> getLike(Integer limit);
+
+	Data<List<Pins>> getLikeNext(String next);
+
+	Data<List<Pins>> getLikeCursor(String cursor, Integer limit, String fields);
+
+	Data<List<Pins>> getLikeCursor(String cursor, Integer limit);
+
+	/*********************************/
 }

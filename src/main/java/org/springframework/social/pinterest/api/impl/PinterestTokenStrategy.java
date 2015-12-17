@@ -6,7 +6,7 @@ public enum PinterestTokenStrategy {
 
 	API_KEY {
 		public ClientHttpRequestInterceptor interceptor(String fields) {
-			return new ApiRequestInterceptor(fields);
+			return new ApiRequestInterceptor();
 		}
 	};
 	abstract ClientHttpRequestInterceptor interceptor(String fields);

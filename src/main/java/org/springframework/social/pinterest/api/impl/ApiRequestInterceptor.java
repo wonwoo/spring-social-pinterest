@@ -10,17 +10,14 @@ import org.springframework.social.support.HttpRequestDecorator;
 
 public class ApiRequestInterceptor implements ClientHttpRequestInterceptor {
 
-	private String fields;
-	
-	public ApiRequestInterceptor(String fields) {
-		this.fields = fields;
+	public ApiRequestInterceptor(){
+
 	}
 
 	@Override
 	public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution)
 			throws IOException {
 		HttpRequestDecorator httpRequestDecorator = new HttpRequestDecorator(request);
-		httpRequestDecorator.addParameter("fields", fields);
 		return execution.execute(request, body);
 	}
 
