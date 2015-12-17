@@ -11,6 +11,8 @@ public class Counts {
 	private Integer boards;
 	private Integer likes;
 	private Integer collaborators;
+	private Integer comments;
+	private Integer repins;
 
 	public Integer getBoards() {
 		return boards;
@@ -36,6 +38,14 @@ public class Counts {
 		return collaborators;
 	}
 
+	public Integer getComments() {
+		return comments;
+	}
+
+	public Integer getRepins() {
+		return repins;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -51,6 +61,10 @@ public class Counts {
 		builder.append(likes);
 		builder.append(", collaborators=");
 		builder.append(collaborators);
+		builder.append(", comments=");
+		builder.append(comments);
+		builder.append(", repins=");
+		builder.append(repins);
 		builder.append("]");
 		return builder.toString();
 	}

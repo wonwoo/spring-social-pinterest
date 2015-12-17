@@ -44,7 +44,9 @@ public class BoardsTest {
 	
 	@Test
 	public void getTest() {
-		final Data<Boards> data = pinterest.boardsOperations().get("174303516767217601");
+		final Data<Boards> data = pinterest.boardsOperations().getBoard("174303516767217394");
+		System.out.println(data.getData().getName());
+		System.out.println(data.getData().getDescription());
 		System.out.println(data);
 	}
 	

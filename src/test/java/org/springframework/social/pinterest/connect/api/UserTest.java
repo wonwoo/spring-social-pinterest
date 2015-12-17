@@ -17,7 +17,7 @@ public class UserTest {
 
 
     String key = "4807113954438426320";
-    String token = "AZNTDA3sbdXlTuq7EmVWV-A2Sx29FCAfWKqyZWlCtluhkKAsGwAAAAA";
+    String token = "AVC1b4Emnf8rvHTZH4J9gopJZnBVFCCc4WI_YJxCtmEPYoBGWgAAAAA";
 
     Pinterest pinterest = null;
     @Before
@@ -26,21 +26,54 @@ public class UserTest {
     }
     @Test
     public void getMe(){
-        pinterest = new PinterestTemplate(token,key);
-        final Data<User> me = pinterest.userOperation().getMe();
+        final Data<User> me = pinterest.userOperations().getMe();
         System.out.println(me.getData().getBio());
         System.out.println(me.getData().getId());
-        System.out.println(me.getData().getImage().get("60x60").get("url"));
+        System.out.println(me.getData().getImage().getOriginal());
         System.out.println(me);
     }
 
     @Test
     public void getBoards(){
-        pinterest = new PinterestTemplate(token,key);
-        final Data<List<Boards>> boards = pinterest.userOperation().getBoards();
+        final Data<List<Boards>> boards = pinterest.userOperations().getBoards();
         for(Boards board : boards.getData()){
             System.out.println(board.getCounts().getCollaborators());
             System.out.println(board);
         }
     }
-}//ASUtqaV-j1ZP1S90Nns0Y9BtHK1yFCAcfv8LnthCtk-Q4UAufgAAAAA
+    
+    @Test
+    public void getUserSerach(){
+        final Data<User> user = pinterest.userOperations().getUserSearch("aoruqjfu");
+        System.out.println(user);
+    }
+    
+    @Test
+    public void getSuggested(){
+        final Data<List<Boards>> user = pinterest.userOperations().getSuggested("174303585486549445");
+        System.out.println(user);
+    }
+    
+    
+    @Test
+    public void getFollowers(){
+        final Data<List<User>> user = pinterest.userOperations().getFollowers();
+        System.out.println(user);
+        System.out.println(user.getPage().getCursor());
+        System.out.println(user.getPage().getNext());
+    }
+    
+    @Test
+    public void getFollowersCursor(){
+    	final Data<List<User>> user = pinterest.userOperations().getFollowersCursor("Pz9MVEZmUlE9PXxlYjcxNGYyOTIzMWEzNWRhNThlYzliNjQwYzM5NjE0YjQ1MDMwZDU4Nzk0MmQ0OTQxZTY3ZGU5ZDEyNjM4YzFj", 1);
+    	System.out.println(user);
+    }
+    
+    
+    @Test
+    public void getFollowersNext(){
+    	final Data<List<User>> user = pinterest.userOperations().getFollowersNext("https://api.pinterest.com/v1/me/followers/?cursor=Pz9MVEZmUlE9PXxlYjcxNGYyOTIzMWEzNWRhNThlYzliNjQwYzM5NjE0YjQ1MDMwZDU4Nzk0MmQ0OTQxZTY3ZGU5ZDEyNjM4YzFj&fields=account_type%2Cbio%2Ccounts%2Ccreated_at%2Cfirst_name%2Cid%2Cimage%2Clast_name%2Curl%2Cusername&limit=1");
+    	System.out.println(user);
+    }
+    
+}

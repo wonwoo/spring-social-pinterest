@@ -17,7 +17,7 @@ public class User extends PinterestObject implements Serializable {
 	private String bio;
 	private String created_at;
 	private Counts counts;
-	private Map<String, Map<String, Object>> image;
+	private Image image;
 	private String account_type;
 	private String url;
 
@@ -41,7 +41,7 @@ public class User extends PinterestObject implements Serializable {
 		return id;
 	}
 
-	public Map<String, Map<String, Object>> getImage() {
+	public Image getImage() {
 		return image;
 	}
 

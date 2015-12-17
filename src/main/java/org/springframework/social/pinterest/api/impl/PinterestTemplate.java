@@ -1,7 +1,6 @@
 package org.springframework.social.pinterest.api.impl;
 
 import java.net.URI;
-import java.util.Map;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -11,10 +10,10 @@ import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
 import org.springframework.social.pinterest.api.BoardsOperations;
+import org.springframework.social.pinterest.api.PinsOperations;
 import org.springframework.social.pinterest.api.Pinterest;
 import org.springframework.social.pinterest.api.UserOperations;
 import org.springframework.social.support.ClientHttpRequestFactorySelector;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -23,8 +22,9 @@ import org.springframework.web.client.RestTemplate;
 public class PinterestTemplate extends AbstractOAuth2ApiBinding implements Pinterest {
 
 	private String apiKey;
-	private UserOperations userOperation;
+	private UserOperations userOperations;
 	private BoardsOperations boardsOperations;
+	private PinsOperations pinsOperations;
 
 	public PinterestTemplate(String apiKey) {
 		this.apiKey = apiKey;
@@ -44,8 +44,9 @@ public class PinterestTemplate extends AbstractOAuth2ApiBinding implements Pinte
 	}
 
 	private void initSubApis() {
-		userOperation = new UserTemplate(this, getRestTemplate(), isAuthorized());
-		boardsOperations = new BoardsTemplate(this, getRestTemplate(), isAuthorized());
+		userOperations = new UserTemplate(this, isAuthorized());
+		boardsOperations = new BoardsTemplate(this, isAuthorized());
+		pinsOperations = new PinsTemplate(this, isAuthorized());
 	}
 
 	public String getBaseUrl() {
@@ -53,13 +54,18 @@ public class PinterestTemplate extends AbstractOAuth2ApiBinding implements Pinte
 	}
 
 	@Override
-	public UserOperations userOperation() {
-		return this.userOperation;
+	public UserOperations userOperations() {
+		return this.userOperations;
 	}
 
 	@Override
 	public BoardsOperations boardsOperations() {
 		return this.boardsOperations;
+	}
+
+	@Override
+	public PinsOperations pinsOperations() {
+		return this.pinsOperations;
 	}
 
 	@Override
@@ -85,7 +91,8 @@ public class PinterestTemplate extends AbstractOAuth2ApiBinding implements Pinte
 	}
 
 	@Override
-	public void delete(String url, Object... urlVariables) {
-		getRestTemplate().delete(getBaseUrl() + url, urlVariables);
+	public void delete(URI uri) {
+		getRestTemplate().delete(uri);
 	}
+
 }

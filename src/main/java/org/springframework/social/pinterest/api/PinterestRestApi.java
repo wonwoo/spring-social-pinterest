@@ -14,14 +14,14 @@ import org.springframework.util.MultiValueMap;
  */
 public interface PinterestRestApi {
 
-    <T> ResponseEntity<T> getExchange(URI uri, ParameterizedTypeReference<T> responseType);
+	<T> ResponseEntity<T> getExchange(URI uri, ParameterizedTypeReference<T> responseType);
 
-    <T> ResponseEntity<T> postExchange(URI uri, HttpEntity<?> requestEntity,
-                                       ParameterizedTypeReference<T> responseType);
+	<T> ResponseEntity<T> postExchange(URI uri, HttpEntity<?> requestEntity,
+			ParameterizedTypeReference<T> responseType);
 
-    <T> ResponseEntity<T> patchExchange(URI uri, HttpEntity<?> requestEntity,
-                                               ParameterizedTypeReference<T> responseType);
+	<T> ResponseEntity<T> patchExchange(URI uri, HttpEntity<?> requestEntity,
+			ParameterizedTypeReference<T> responseType);
 
-    void delete(String url, Object... urlVariables);
+	void delete(URI uri);
 
 }

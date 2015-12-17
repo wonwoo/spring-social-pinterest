@@ -1,5 +1,8 @@
 package org.springframework.social.pinterest.api;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 public class Image {
 
 	private Original original;
@@ -21,9 +24,22 @@ public class Image {
 			return height;
 		}
 	}
-
 	public Original getOriginal() {
 		return original;
+	}
+	
+	public Original getProfile() {
+		return original;
+	}
+
+	@JsonSetter(value = "original")
+	public void setOriginal(Original original) {
+		this.original = original;
+	}
+	
+	@JsonSetter(value = "60x60")
+	public void setProfile(Original original) {
+		this.original = original;
 	}
 
 }

@@ -1,7 +1,5 @@
 package org.springframework.social.pinterest.api;
 
-import java.util.Map;
-
 /**
  * Created by wonwoo on 15. 12. 16..
  */
@@ -13,7 +11,7 @@ public class Boards {
     private String created_at;
     private Creator creator;
     private String description;
-    private Map<String,Object> image;
+    private Image image;
     private String privacy;
     private String reason;
     private Counts counts;
@@ -38,7 +36,7 @@ public class Boards {
         return id;
     }
 
-    public Map<String, Object> getImage() {
+    public Image getImage() {
         return image;
     }
 

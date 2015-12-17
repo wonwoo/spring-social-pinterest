@@ -55,7 +55,7 @@ public interface BoardsOperations {
 	 * @return
 	 */
 
-	Data<Boards> get(String board);
+	Data<Boards> getBoard(String board);
 
 	/**
 	 * <strong>get board</strong><br>
@@ -67,7 +67,7 @@ public interface BoardsOperations {
 	 * @return
 	 */
 
-	Data<Boards> get(String board, String fields);
+	Data<Boards> getBoard(String board, String fields);
 
 	/**
 	 * <strong>board getpin</strong><br>
