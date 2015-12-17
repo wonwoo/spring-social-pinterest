@@ -1,15 +1,16 @@
 package org.springframework.social.pinterest.api.impl;
 
+import static org.springframework.social.pinterest.api.Const.*;
+
 import java.net.URI;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.ResponseEntity;
-import org.springframework.social.pinterest.api.BoardPin;
 import org.springframework.social.pinterest.api.Boards;
 import org.springframework.social.pinterest.api.Data;
-import org.springframework.social.pinterest.api.ParameterizedTypeReferenceInstance;
 import org.springframework.social.pinterest.api.PinterestRestApi;
 import org.springframework.social.pinterest.api.User;
 import org.springframework.social.pinterest.api.UserOperations;
@@ -39,7 +40,8 @@ public class UserTemplate extends AbstractPinterestOperations implements UserOpe
 		requiredParameters(fields);
 		String url = getBaseUrl() + prefix + "?fields={fields}";
 		URI expanded = new UriTemplate(url).expand(fields);
-		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReferenceInstance<User>()).getBody();
+		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReference<Data<User>>() {
+		}).getBody();
 	}
 
 	@Override
@@ -53,17 +55,18 @@ public class UserTemplate extends AbstractPinterestOperations implements UserOpe
 		requiredParameters(fields);
 		String url = getBaseUrl() + prefix + "boards?fields={fields}";
 		URI expanded = new UriTemplate(url).expand(fields);
-		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReferenceInstance<List<Boards>>()).getBody();
+		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReference<Data<List<Boards>>>() {
+		}).getBody();
 	}
 
 	@Override
 	public Data<List<Boards>> getBoards() {
-		return getBoards("counts,created_at,creator,description,id,image,name,privacy,reason,url");
+		return getBoards(DEFAULT_BOARDS_FIELDS);
 	}
 
 	@Override
 	public Data<User> getUserSearch(String user) {
-		return getUserSearch(user, "account_type,bio,counts,created_at,first_name,id,image,last_name,url,username");
+		return getUserSearch(user, DEFAULT_USER_FIELDS);
 	}
 
 	@Override
@@ -72,7 +75,8 @@ public class UserTemplate extends AbstractPinterestOperations implements UserOpe
 		requiredParameters(user, fields);
 		String url = getBaseUrl() + "/users/{user}/?fields={fields}";
 		URI expanded = new UriTemplate(url).expand(user, fields);
-		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReferenceInstance<User>()).getBody();
+		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReference<Data<User>>() {
+		}).getBody();
 	}
 
 	@Override
@@ -82,12 +86,13 @@ public class UserTemplate extends AbstractPinterestOperations implements UserOpe
 
 		String url = getBaseUrl() + prefix + "/boards/suggested/?pin={pin}&count={count}&fields={fields}";
 		URI expanded = new UriTemplate(url).expand(pin, count, fields);
-		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReferenceInstance<List<Boards>>()).getBody();
+		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReference<Data<List<Boards>>>() {
+		}).getBody();
 	}
 
 	@Override
 	public Data<List<Boards>> getSuggested(String pin, Integer count) {
-		return getSuggested(pin, count, "counts,created_at,creator,description,id,image,name,privacy,reason,url");
+		return getSuggested(pin, count, DEFAULT_BOARDS_FIELDS);
 	}
 
 	@Override
@@ -101,25 +106,27 @@ public class UserTemplate extends AbstractPinterestOperations implements UserOpe
 		requiredParameters(limit, fields);
 		String url = getBaseUrl() + prefix + "followers/?limit={limit}&fields={fields}";
 		URI expanded = new UriTemplate(url).expand(limit, fields);
-		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReferenceInstance<List<User>>()).getBody();
+		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReference<Data<List<User>>>() {
+		}).getBody();
 	}
 
 	@Override
 	public Data<List<User>> getFollowers(Integer limit) {
-		return getFollowers(limit, "account_type,bio,counts,created_at,first_name,id,image,last_name,url,username");
+		return getFollowers(limit, DEFAULT_USER_FIELDS);
 	}
 
 	@Override
 	public Data<List<User>> getFollowers() {
-		return getFollowers(1);
+		return getFollowers(DEFAULT_LIMIT);
 	}
 
 	@Override
 	public Data<List<User>> getFollowersNext(String next) {
 		requiredParameters(next);
 		return pinterestRestApi
-				.getExchange(URIBuilder.fromUri(next).build(), new ParameterizedTypeReferenceInstance<List<User>>())
-				.getBody();
+				.getExchange(URIBuilder.fromUri(next).build(), new ParameterizedTypeReference<Data<List<User>>>() {
+				}).getBody();
+
 	}
 
 	@Override
@@ -128,13 +135,13 @@ public class UserTemplate extends AbstractPinterestOperations implements UserOpe
 		requiredParameters(cursor, limit, fields);
 		String url = getBaseUrl() + prefix + "followers/?cursor={cursor}&limit={limit}&fields={fields}";
 		URI expanded = new UriTemplate(url).expand(cursor, limit, fields);
-		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReferenceInstance<List<User>>()).getBody();
+		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReference<Data<List<User>>>() {
+		}).getBody();
 	}
 
 	@Override
 	public Data<List<User>> getFollowersCursor(String cursor, Integer limit) {
-		return getFollowersCursor(cursor, limit,
-				"account_type,bio,counts,created_at,first_name,id,image,last_name,url,username");
+		return getFollowersCursor(cursor, limit, DEFAULT_USER_FIELDS);
 	}
 
 	@Override
@@ -143,34 +150,64 @@ public class UserTemplate extends AbstractPinterestOperations implements UserOpe
 		requiredParameters(limit, fields);
 		String url = getBaseUrl() + prefix + "following/boards/?limit={limit}&fields={fields}";
 		URI expanded = new UriTemplate(url).expand(limit, fields);
-		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReferenceInstance<List<Boards>>()).getBody();
+		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReference<Data<List<Boards>>>() {
+		}).getBody();
 	}
 
 	@Override
 	public Data<List<Boards>> getFollowersBoards(Integer limit) {
-		return getFollowersBoards(limit, "counts,created_at,creator,description,id,image,name,privacy,reason,url");
+		return getFollowersBoards(limit, DEFAULT_BOARDS_FIELDS);
 	}
 
 	@Override
 	public Data<List<Boards>> getFollowersBoards() {
-		return getFollowersBoards(25);
+		return getFollowersBoards(DEFAULT_LIMIT);
 	}
 
 	@Override
-	public Data<List<User>> getFollowersBoards(String next) {
-		return null;
+	public Data<List<Boards>> getFollowersBoardsNext(String next) {
+		requireAuthorization();
+		requiredParameters(next);
+		return pinterestRestApi
+				.getExchange(URIBuilder.fromUri(next).build(), new ParameterizedTypeReference<Data<List<Boards>>>() {
+				}).getBody();
 	}
 
 	@Override
-	public Data<List<User>> getFollowersBoards(String cursor, Integer limit, String fields) {
-		// TODO Auto-generated method stub
-		return null;
+	public Data<List<Boards>> getFollowersBoardsCursor(String cursor, Integer limit, String fields) {
+		requireAuthorization();
+		requiredParameters(cursor, limit, fields);
+		String url = getBaseUrl() + prefix + "following/boards/?cursor={cursor}&limit={limit}&fields={fields}";
+		URI expanded = new UriTemplate(url).expand(cursor, limit, fields);
+		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReference<Data<List<Boards>>>() {
+		}).getBody();
 	}
 
 	@Override
-	public Data<List<User>> getFollowersBoards(String cursor, Integer limit) {
-		// TODO Auto-generated method stub
-		return null;
+	public Data<List<Boards>> getFollowersBoardsCursor(String cursor, Integer limit) {
+		return getFollowersBoardsCursor(cursor, limit, DEFAULT_BOARDS_FIELDS);
+	}
+
+	@Override
+	public Data<String> followingBoards(String board) {
+		requireAuthorization();
+		requiredParameters(board);
+		String url = getBaseUrl() + prefix + "following/boards/";
+		Map<String, Object> body = new HashMap<String, Object>();
+		body.put("board", board);
+		HttpEntity<?> requestEntity = new HttpEntity<Map<String, Object>>(body);
+		return pinterestRestApi.postExchange(URIBuilder.fromUri(url).build(), requestEntity,
+				new ParameterizedTypeReference<Data<String>>() {
+				}).getBody();
+	}
+
+	@Override
+	public void unfollowingBoards(String board) {
+		requireAuthorization();
+		requiredParameters(board);
+		String url = getBaseUrl() + prefix + "following/boards/{board}/";
+		URI expanded = new UriTemplate(url).expand(board);
+		pinterestRestApi.delete(expanded);
 	}
 
 }

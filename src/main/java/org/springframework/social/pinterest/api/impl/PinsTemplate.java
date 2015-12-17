@@ -1,11 +1,12 @@
 package org.springframework.social.pinterest.api.impl;
 
+import static org.springframework.social.pinterest.api.Const.*;
+
 import java.net.URI;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.social.pinterest.api.Data;
-import org.springframework.social.pinterest.api.ParameterizedTypeReferenceInstance;
 import org.springframework.social.pinterest.api.Pins;
 import org.springframework.social.pinterest.api.PinsData;
 import org.springframework.social.pinterest.api.PinsOperations;
@@ -25,8 +26,7 @@ public class PinsTemplate extends AbstractPinterestOperations implements PinsOpe
 
 	@Override
 	public Data<Pins> create(PinsData pinsData) {
-		return create(pinsData,
-				"attribution,board,color,counts,created_at,creator,id,image,link,media,metadata,note,original_link,url");
+		return create(pinsData, DEFAULT_PINS_FIELDS);
 	}
 
 	@Override
@@ -37,7 +37,9 @@ public class PinsTemplate extends AbstractPinterestOperations implements PinsOpe
 		URI expanded = new UriTemplate(url).expand(fields);
 		HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<MultiValueMap<String, Object>>(
 				pinsData.toRequestParameters());
-		return pinterestRestApi.postExchange(expanded, requestEntity, new ParameterizedTypeReferenceInstance<Pins>()).getBody();
+		return pinterestRestApi.postExchange(expanded, requestEntity, new ParameterizedTypeReference<Data<Pins>>() {
+		}).getBody();
+
 	}
 
 	@Override
@@ -55,12 +57,12 @@ public class PinsTemplate extends AbstractPinterestOperations implements PinsOpe
 		requiredParameters(pin, fields);
 		String url = getBaseUrl() + prefix + "{pin}?fields={fields}";
 		URI expanded = new UriTemplate(url).expand(pin, fields);
-		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReferenceInstance<Pins>()).getBody();
+		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReference<Data<Pins>>() {
+		}).getBody();
 	}
 
 	@Override
 	public Data<Pins> get(String pin) {
-		return get(pin,
-				"attribution,board,color,counts,created_at,creator,id,image,link,media,metadata,note,original_link,url");
+		return get(pin, DEFAULT_PINS_FIELDS);
 	}
 }

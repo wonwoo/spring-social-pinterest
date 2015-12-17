@@ -104,9 +104,16 @@ public interface UserOperations {
 
 	Data<List<Boards>> getFollowersBoards();
 
-	Data<List<User>> getFollowersBoards(String next);
+	Data<List<Boards>> getFollowersBoardsNext(String next);
 
-	Data<List<User>> getFollowersBoards(String cursor, Integer limit, String fields);
+	Data<List<Boards>> getFollowersBoardsCursor(String cursor, Integer limit, String fields);
 
-	Data<List<User>> getFollowersBoards(String cursor, Integer limit);
+	Data<List<Boards>> getFollowersBoardsCursor(String cursor, Integer limit);
+
+	/*********************************************/
+	
+	Data<String> followingBoards(String board);
+	
+	void unfollowingBoards(String board);
+
 }
