@@ -5,14 +5,7 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.social.pinterest.api.Boards;
-import org.springframework.social.pinterest.api.Data;
-import org.springframework.social.pinterest.api.Interests;
-import org.springframework.social.pinterest.api.Pins;
-import org.springframework.social.pinterest.api.Pinterest;
-import org.springframework.social.pinterest.api.User;
 import org.springframework.social.pinterest.api.impl.PinterestTemplate;
-import org.springframework.util.Assert;
 
 /**
  * Created by wonwoo on 15. 12. 15..

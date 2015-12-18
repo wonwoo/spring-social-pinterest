@@ -22,11 +22,26 @@ public class Image {
 		public Integer getHeight() {
 			return height;
 		}
+
+		@Override
+		public String toString() {
+			StringBuilder builder = new StringBuilder();
+			builder.append("Original [url=");
+			builder.append(url);
+			builder.append(", width=");
+			builder.append(width);
+			builder.append(", height=");
+			builder.append(height);
+			builder.append("]");
+			return builder.toString();
+		}
+
 	}
+
 	public Original getOriginal() {
 		return original;
 	}
-	
+
 	public Original getProfile() {
 		return original;
 	}
@@ -35,10 +50,19 @@ public class Image {
 	public void setOriginal(Original original) {
 		this.original = original;
 	}
-	
+
 	@JsonSetter(value = "60x60")
 	public void setProfile(Original original) {
 		this.original = original;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Image [original=");
+		builder.append(original);
+		builder.append("]");
+		return builder.toString();
 	}
 
 }

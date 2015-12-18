@@ -88,4 +88,26 @@ public class PinterestError {
 		this.data = data;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("PinterestError [message=");
+		builder.append(message);
+		builder.append(", type=");
+		builder.append(type);
+		builder.append(", param=");
+		builder.append(param);
+		builder.append(", status=");
+		builder.append(status);
+		builder.append(", code=");
+		builder.append(code);
+		builder.append(", host=");
+		builder.append(host);
+		builder.append(", generated_at=");
+		builder.append(generated_at);
+		builder.append(", data=");
+		builder.append(data);
+		builder.append("]");
+		return builder.toString();
+	}
 }

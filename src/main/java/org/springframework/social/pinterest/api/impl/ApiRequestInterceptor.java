@@ -11,7 +11,6 @@ import org.springframework.social.support.HttpRequestDecorator;
 public class ApiRequestInterceptor implements ClientHttpRequestInterceptor {
 
 	public ApiRequestInterceptor(){
-
 	}
 
 	@Override

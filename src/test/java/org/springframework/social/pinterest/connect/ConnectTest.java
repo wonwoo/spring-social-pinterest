@@ -49,12 +49,5 @@ public class ConnectTest {
 
     private void printAcess(AccessGrant accessGrant) throws IOException {
         System.out.println(String.format("accessToken : %s", accessGrant.getAccessToken()));
-//        System.out.println(String.format("expireTime : %s", accessGrant.getExpireTime()));
-//        System.out.println(String.format("refreshToken : %s", accessGrant.getRefreshToken()));
-//        System.out.println(String.format("scope : %s", accessGrant.getScope()));
-
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        List<String> scopes = objectMapper.readValue(accessGrant.getScope(), List.class);
-//        System.out.println(scopes);
     }
 }

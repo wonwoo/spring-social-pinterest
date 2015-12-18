@@ -9,10 +9,10 @@ import java.util.Map;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
-import org.springframework.social.pinterest.api.BoardPin;
 import org.springframework.social.pinterest.api.Boards;
 import org.springframework.social.pinterest.api.BoardsOperations;
 import org.springframework.social.pinterest.api.Data;
+import org.springframework.social.pinterest.api.Pins;
 import org.springframework.social.pinterest.api.PinterestRestApi;
 import org.springframework.social.support.URIBuilder;
 import org.springframework.web.util.UriTemplate;
@@ -85,44 +85,44 @@ public class BoardsTemplate extends AbstractPinterestOperations implements Board
 	}
 
 	@Override
-	public Data<List<BoardPin>> getPin(String board) {
+	public Data<List<Pins>> getPin(String board) {
 		return getPin(board, DEFAULT_PINS_FIELDS);
 	}
 
 	@Override
-	public Data<List<BoardPin>> getPin(String board, String fields) {
+	public Data<List<Pins>> getPin(String board, String fields) {
 		return getPin(board, DEFAULT_LIMIT, fields);
 	}
 
-	public Data<List<BoardPin>> getPin(String board, Integer limit, String fields) {
+	public Data<List<Pins>> getPin(String board, Integer limit, String fields) {
 		requiredParameters(board, limit, fields);
 		String url = getBaseUrl() + prefix + "{board}/pins/?fields={fields}&limit={limit}";
 		URI expanded = new UriTemplate(url).expand(board, fields, limit);
-		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReference<Data<List<BoardPin>>>() {
+		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReference<Data<List<Pins>>>() {
 		}).getBody();
 	}
 
 	@Override
-	public Data<List<BoardPin>> getPinNext(String next) {
+	public Data<List<Pins>> getPinNext(String next) {
 		requiredParameters(next);
 		return pinterestRestApi
-				.getExchange(URIBuilder.fromUri(next).build(), new ParameterizedTypeReference<Data<List<BoardPin>>>() {
+				.getExchange(URIBuilder.fromUri(next).build(), new ParameterizedTypeReference<Data<List<Pins>>>() {
 				}).getBody();
 
 	}
 
 	@Override
-	public Data<List<BoardPin>> getPinCursor(String board, String cursor, Integer limit) {
+	public Data<List<Pins>> getPinCursor(String board, String cursor, Integer limit) {
 		return getPinCursor(board, cursor, limit, DEFAULT_PINS_FIELDS);
 	}
 
 	@Override
-	public Data<List<BoardPin>> getPinCursor(String board, String cursor, Integer limit, String fields) {
+	public Data<List<Pins>> getPinCursor(String board, String cursor, Integer limit, String fields) {
 		requireAuthorization();
 		requiredParameters(board, cursor, limit, fields);
 		String url = getBaseUrl() + prefix + "{board}/pins/?cursor={cursor}&limit={limit}&fields={fields}";
 		URI expanded = new UriTemplate(url).expand(board, cursor, limit, fields);
-		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReference<Data<List<BoardPin>>>() {
+		return pinterestRestApi.getExchange(expanded, new ParameterizedTypeReference<Data<List<Pins>>>() {
 		}).getBody();
 
 	}

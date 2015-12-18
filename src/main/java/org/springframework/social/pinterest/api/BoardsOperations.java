@@ -81,7 +81,7 @@ public interface BoardsOperations {
 	 * @return
 	 */
 
-	Data<List<BoardPin>> getPin(String board);
+	Data<List<Pins>> getPin(String board);
 
 	/**
 	 * <strong>board getpin</strong><br>
@@ -92,7 +92,7 @@ public interface BoardsOperations {
 	 * @return
 	 */
 
-	Data<List<BoardPin>> getPin(String board, String fields);
+	Data<List<Pins>> getPin(String board, String fields);
 
 	/**
 	 * <strong>board getpin</strong><br>
@@ -104,7 +104,7 @@ public interface BoardsOperations {
 	 * @return
 	 */
 
-	Data<List<BoardPin>> getPin(String board, Integer limit, String fields);
+	Data<List<Pins>> getPin(String board, Integer limit, String fields);
 
 	/**
 	 * <strong>board getPinNext</strong><br>
@@ -113,7 +113,7 @@ public interface BoardsOperations {
 	 * @param next
 	 * @return
 	 */
-	Data<List<BoardPin>> getPinNext(String next);
+	Data<List<Pins>> getPinNext(String next);
 
 	/**
 	 * <strong>board getPinCursor</strong><br>
@@ -130,7 +130,7 @@ public interface BoardsOperations {
 	 * @return
 	 */
 
-	Data<List<BoardPin>> getPinCursor(String board, String cursor, Integer limit);
+	Data<List<Pins>> getPinCursor(String board, String cursor, Integer limit);
 
 	/**
 	 * <strong>board getPinCursor</strong><br>
@@ -142,7 +142,7 @@ public interface BoardsOperations {
 	 * @param fields
 	 * @return
 	 */
-	Data<List<BoardPin>> getPinCursor(String board, String cursor, Integer limit, String fields);
+	Data<List<Pins>> getPinCursor(String board, String cursor, Integer limit, String fields);
 
 	/**
 	 * 
