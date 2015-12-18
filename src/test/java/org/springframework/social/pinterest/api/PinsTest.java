@@ -1,4 +1,4 @@
-package org.springframework.social.pinterest.connect.api;
+package org.springframework.social.pinterest.api;
 
 import org.junit.Before;
 import org.junit.Test;

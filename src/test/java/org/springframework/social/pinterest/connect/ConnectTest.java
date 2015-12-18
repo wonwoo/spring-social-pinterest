@@ -1,17 +1,14 @@
 package org.springframework.social.pinterest.connect;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.social.connect.ConnectionFactory;
 import org.springframework.social.connect.support.ConnectionFactoryRegistry;
 import org.springframework.social.oauth2.AccessGrant;
 import org.springframework.social.oauth2.GrantType;
 import org.springframework.social.oauth2.OAuth2Operations;
 import org.springframework.social.oauth2.OAuth2Parameters;
-
-import java.io.IOException;
-import java.util.List;
 
 /**
  * Created by wonwoo on 15. 12. 15..
@@ -43,7 +40,7 @@ public class ConnectTest {
     }
 
     @Test
-    public void accessTokenTest() throws IOException {
+    public void accessTokenTest() throws IOException {	
         String code = "7f926bfbfe6156e3";
         OAuth2Operations oAuth2Operations = pinterestConnectionFactory.getOAuthOperations();
         AccessGrant accessGrant = oAuth2Operations.exchangeForAccess(code, "https://localhost:8080/pinterest/callback", null);
