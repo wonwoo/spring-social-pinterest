@@ -111,9 +111,9 @@ public interface UserOperations {
 	Data<List<Boards>> getFollowersBoardsCursor(String cursor, Integer limit);
 
 	/*********************************************/
-	
+
 	Data<String> followingBoards(String board);
-	
+
 	void unfollowingBoards(String board);
 
 	/*********************************/
@@ -123,7 +123,6 @@ public interface UserOperations {
 	Data<List<Interests>> getfollowingInterestsNext(String next);
 
 	Data<List<Interests>> getfollowingInterestsCursor(String cursor, Integer limit);
-
 
 	/*********************************/
 	Data<List<User>> getfollowingUsers(Integer limit, String fields);
@@ -155,4 +154,38 @@ public interface UserOperations {
 	Data<List<Pins>> getLikeCursor(String cursor, Integer limit);
 
 	/*********************************/
+
+	Data<List<Pins>> getPins(Integer limit, String fields);
+
+	Data<List<Pins>> getPins(Integer limit);
+
+	Data<List<Pins>> getPinsNext(String next);
+
+	Data<List<Pins>> getPinsCursor(String cursor, Integer limit, String fields);
+
+	Data<List<Pins>> getPinsCursor(String cursor, Integer limit);
+
+	/*********************************/
+
+	Data<List<Boards>> getSearchBoards(String query, String fields);
+
+	Data<List<Boards>> getSearchBoards(String query);
+
+	Data<List<Boards>> getSearchBoardsNext(String next);
+
+	Data<List<Boards>> getSearchBoardsCursor(String query, String cursor, String fields);
+
+	Data<List<Boards>> getSearchBoardsCursor(String query, String cursor);
+
+	/*********************************/
+
+	Data<List<Pins>> getSearchPins(String query, Integer limit, String fields);
+
+	Data<List<Pins>> getSearchPins(String query, Integer limit);
+
+	Data<List<Pins>> getSearchPinsNext(String next);
+
+	Data<List<Pins>> getSearchPinsCursor(String query, String cursor, Integer limit, String fields);
+
+	Data<List<Pins>> getSearchPinsCursor(String query, String cursor, Integer limit);
 }

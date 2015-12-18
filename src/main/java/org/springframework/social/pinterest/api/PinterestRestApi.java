@@ -1,13 +1,10 @@
 package org.springframework.social.pinterest.api;
 
 import java.net.URI;
-import java.util.Map;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.MultiValueMap;
 
 /**
  * Created by wonwoo on 15. 12. 15..

@@ -1,6 +1,5 @@
 package org.springframework.social.pinterest.api;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 public class Image {

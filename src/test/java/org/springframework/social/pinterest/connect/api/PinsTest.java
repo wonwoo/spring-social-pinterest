@@ -7,6 +7,7 @@ import org.springframework.social.pinterest.api.Pins;
 import org.springframework.social.pinterest.api.PinsData;
 import org.springframework.social.pinterest.api.Pinterest;
 import org.springframework.social.pinterest.api.impl.PinterestTemplate;
+import org.springframework.social.pinterest.api.impl.UserTemplate;
 
 public class PinsTest {
 
