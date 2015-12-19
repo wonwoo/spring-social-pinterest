@@ -60,12 +60,12 @@ public class BoardsTemplate extends AbstractPinterestOperations implements Board
 	public Data<Boards> patch(String board, String name, String description, String fields) {
 		requireAuthorization();
 		requiredParameters(board, name, fields);
+		String url = getBaseUrl() + prefix + "{board}/?fields={fields}";
+		URI expanded = new UriTemplate(url).expand(board,fields);
 		Map<String, Object> body = new HashMap<String, Object>();
 		body.put("name", name);
 		body.put("description", description == null ? "" : description);
 		HttpEntity<?> requestEntity = new HttpEntity<Map<String, Object>>(body);
-		String url = getBaseUrl() + prefix + "{board}/?fields={fields}";
-		URI expanded = new UriTemplate(url).expand(board, fields);
 		return pinterestRestApi.patchExchange(expanded, requestEntity, new ParameterizedTypeReference<Data<Boards>>() {
 		}).getBody();
 	}

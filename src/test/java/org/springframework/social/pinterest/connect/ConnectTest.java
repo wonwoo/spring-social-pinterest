@@ -15,8 +15,10 @@ import org.springframework.social.oauth2.OAuth2Parameters;
  */
 public class ConnectTest {
 
+    //insert appid
     private String APP_ID="4807113954438426320";
-    private String SECRET_KEY = "c9dcf505406df635a9047afa354cb8f3f4207f7ce0202ca856d4c9af2caf7a27";
+    //insert app secret
+    private String APP_SECRET = "c9dcf505406df635a9047afa354cb8f3f4207f7ce0202ca856d4c9af2caf7a27";
 
     PinterestConnectionFactory pinterestConnectionFactory = null;
     ConnectionFactoryRegistry connectionFactoryRegistry = null;
@@ -24,7 +26,7 @@ public class ConnectTest {
 
     @Before
     public void befofe() {
-        pinterestConnectionFactory = new PinterestConnectionFactory(APP_ID, SECRET_KEY);
+        pinterestConnectionFactory = new PinterestConnectionFactory(APP_ID, APP_SECRET);
         connectionFactoryRegistry = new ConnectionFactoryRegistry();
         connectionFactoryRegistry.addConnectionFactory(pinterestConnectionFactory);
         oAuth2Parameters = new OAuth2Parameters();
@@ -40,8 +42,9 @@ public class ConnectTest {
     }
 
     @Test
-    public void accessTokenTest() throws IOException {	
-        String code = "7f926bfbfe6156e3";
+    public void accessTokenTest() throws IOException {
+        //insert result code
+        String code = "";
         OAuth2Operations oAuth2Operations = pinterestConnectionFactory.getOAuthOperations();
         AccessGrant accessGrant = oAuth2Operations.exchangeForAccess(code, "https://localhost:8080/pinterest/callback", null);
         printAcess(accessGrant);

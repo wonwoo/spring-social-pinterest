@@ -3,6 +3,9 @@ package org.springframework.social.pinterest.api;
 import java.util.List;
 
 /**
+ *
+ *
+ *
  * Created by wonwoo on 15. 12. 15..
  */
 public interface UserOperations {
@@ -76,24 +79,109 @@ public interface UserOperations {
 
 	/*********************************************/
 
+	/**
+	 * <strong>getSuggested</strong><br>
+	 * pin, count, fields <br>
+	 * The default field <br>
+	 * <strong>counts,created_at,creator,description,id,image,name,privacy,reason,url</strong>
+	 *
+	 * @param pin
+	 * @param count
+	 * @param fields
+	 * @return
+	 */
 	Data<List<Boards>> getSuggested(String pin, Integer count, String fields);
 
+	/**
+	 * <strong>getSuggested</strong><br>
+	 * pin, count <br>
+	 * The default field <br>
+	 * <strong>counts,created_at,creator,description,id,image,name,privacy,reason,url</strong>
+	 *
+	 * @param pin
+	 * @param count
+	 * @return
+	 */
 	Data<List<Boards>> getSuggested(String pin, Integer count);
 
+	/**
+	 * <strong>getSuggested</strong><br>
+	 * pin <br>
+	 * The default field <br>
+	 * <strong>counts,created_at,creator,description,id,image,name,privacy,reason,url</strong>
+	 * @param pin
+	 * @return
+	 */
 	Data<List<Boards>> getSuggested(String pin);
+
 
 	/*********************************************/
 
+
+	/**
+	 * <strong>getFollowers</strong><br>
+	 * limit, fields <br>
+	 * The default field <br>
+	 * <strong>account_type,bio,counts,created_at,first_name,id,image,last_name,url,username</strong>
+	 *
+	 * @param limit
+	 * @param fields
+	 * @return
+	 */
+
 	Data<List<User>> getFollowers(Integer limit, String fields);
 
+	/**
+	 * <strong>getFollowers</strong><br>
+	 * limit <br>
+	 * The default field <br>
+	 * <strong>account_type,bio,counts,created_at,first_name,id,image,last_name,url,username</strong>
+	 *
+	 * @param limit
+	 * @return
+	 */
 	Data<List<User>> getFollowers(Integer limit);
 
+	/**
+	 * <strong>getFollowers</strong><br>
+	 * The default limit 25 <br>
+	 * The default field <br>
+	 * <strong>account_type,bio,counts,created_at,first_name,id,image,last_name,url,username</strong>
+	 *
+	 * @return
+	 */
 	Data<List<User>> getFollowers();
 
+	/**
+	 * <strong>getFollowers</strong><br>
+	 *  next<br>
+	 * @param next
+	 * @return
+	 */
 	Data<List<User>> getFollowersNext(String next);
 
+	/**
+	 * <strong>getFollowers</strong><br>
+	 *  cursor, limit, fields
+	 *  The default field <br>
+	 *  <strong>account_type,bio,counts,created_at,first_name,id,image,last_name,url,username</strong>
+	 *
+	 * @param cursor
+	 * @param limit
+	 * @param fields
+	 * @return
+	 */
 	Data<List<User>> getFollowersCursor(String cursor, Integer limit, String fields);
 
+	/**
+	 * 	<strong>getFollowers</strong><br>
+	 *  cursor, limit
+	 *  The default field <br>
+	 *  <strong>account_type,bio,counts,created_at,first_name,id,image,last_name,url,username</strong>
+	 * @param cursor
+	 * @param limit
+	 * @return
+	 */
 	Data<List<User>> getFollowersCursor(String cursor, Integer limit);
 
 	/*********************************************/

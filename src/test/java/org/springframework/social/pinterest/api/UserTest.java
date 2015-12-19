@@ -12,14 +12,13 @@ import org.springframework.social.pinterest.api.impl.PinterestTemplate;
  */
 public class UserTest {
 
-	String key = "4807113954438426320";
 	String token = "AVC1b4Emnf8rvHTZH4J9gopJZnBVFCCc4WI_YJxCtmEPYoBGWgAAAAA";
 
 	Pinterest pinterest = null;
 
 	@Before
 	public void before() {
-		pinterest = new PinterestTemplate(token, key);
+		pinterest = new PinterestTemplate(token);
 	}
 
 	@Test

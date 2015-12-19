@@ -52,6 +52,23 @@ public class PinsTemplate extends AbstractPinterestOperations implements PinsOpe
 	}
 
 	@Override
+	public Data<Pins> patch(String pin, PinsData pinsData, String fields) {
+		requireAuthorization();
+		requiredParameters(pin, fields);
+		String url = getBaseUrl() + prefix + "{pin}/?fields={fields}";
+		URI expanded = new UriTemplate(url).expand(pin, fields);
+		HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<MultiValueMap<String, Object>>(
+				pinsData.toRequestParameters());
+		return pinterestRestApi.patchExchange(expanded, requestEntity, new ParameterizedTypeReference<Data<Pins>>() {
+		}).getBody();
+	}
+
+	@Override
+	public Data<Pins> patch(String pin, PinsData pinsData) {
+		return patch(pin, pinsData, DEFAULT_PINS_FIELDS);
+	}
+
+	@Override
 	public Data<Pins> get(String pin, String fields) {
 		requireAuthorization();
 		requiredParameters(pin, fields);

@@ -21,19 +21,12 @@ import org.springframework.web.client.RestTemplate;
  */
 public class PinterestTemplate extends AbstractOAuth2ApiBinding implements Pinterest {
 
-	private String apiKey;
 	private UserOperations userOperations;
 	private BoardsOperations boardsOperations;
 	private PinsOperations pinsOperations;
 
-	public PinterestTemplate(String apiKey) {
-		this.apiKey = apiKey;
-		initialize();
-	}
-
-	public PinterestTemplate(String accessToken, String apiKey) {
+	public PinterestTemplate(String accessToken) {
 		super(accessToken);
-		this.apiKey = apiKey;
 		initialize();
 	}
 
@@ -47,10 +40,6 @@ public class PinterestTemplate extends AbstractOAuth2ApiBinding implements Pinte
 		userOperations = new UserTemplate(this, isAuthorized());
 		boardsOperations = new BoardsTemplate(this, isAuthorized());
 		pinsOperations = new PinsTemplate(this, isAuthorized());
-	}
-
-	public String getBaseUrl() {
-		return "https://api.pinterest.com/v1/";
 	}
 
 	@Override

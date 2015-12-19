@@ -5,7 +5,8 @@
 
 	<groupId>org.springframework.social</groupId>
 	<artifactId>spring-social-pinterest</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.2.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	
 	<properties>
 		<java-version>1.6</java-version>
