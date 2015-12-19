@@ -16,9 +16,9 @@ import org.springframework.social.oauth2.OAuth2Parameters;
 public class ConnectTest {
 
     //insert appid
-    private String APP_ID="4807113954438426320";
+    private String APP_ID="";
     //insert app secret
-    private String APP_SECRET = "c9dcf505406df635a9047afa354cb8f3f4207f7ce0202ca856d4c9af2caf7a27";
+    private String APP_SECRET = "";
 
     PinterestConnectionFactory pinterestConnectionFactory = null;
     ConnectionFactoryRegistry connectionFactoryRegistry = null;
