@@ -1,6 +1,6 @@
 # spring-social-pinterest
 spring-social-pinterest 
-```
+```xml
 <repositories>
 	<repository>
 		<id>spring-social-pinterest-mvn-repo</id>
@@ -11,8 +11,7 @@ spring-social-pinterest
 		</snapshots>
 	</repository>
 </repositories>
-```
-```
+
 <dependencies>
 	<dependency>
 		<groupId>org.springframework.social</groupId>
