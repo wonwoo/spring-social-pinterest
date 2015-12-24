@@ -1,5 +1,5 @@
 # spring-social-pinterest
-spring-social-pinterest 
+spring-social-pinterest  
 ```xml
 <repositories>
 	<repository>
@@ -24,6 +24,6 @@ spring-social-pinterest
 
 ## Issues
  patch method not working pinterest bug
- 1. Edit a Board
- 2. Edit a Pin's information
+ - Edit a Board
+ - Edit a Pin's information
  
