@@ -12,13 +12,13 @@ spring-social-pinterest
 	</repository>
 </repositories>
 
-<dependencies>
-	<dependency>
-		<groupId>org.springframework.social</groupId>
-		<artifactId>spring-social-pinterest</artifactId>
-		<version>0.9.0-RELEASE</version>
-	</dependency>
-</dependencies>
+
+<dependency>
+	<groupId>org.springframework.social</groupId>
+	<artifactId>spring-social-pinterest</artifactId>
+	<version>0.9.0-RELEASE</version>
+</dependency>
+
 ```
 
 
