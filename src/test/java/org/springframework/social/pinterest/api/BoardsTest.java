@@ -5,19 +5,12 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.core.env.Environment;
-import org.springframework.social.UserIdSource;
-import org.springframework.social.config.annotation.ConnectionFactoryConfigurer;
-import org.springframework.social.config.annotation.SocialConfiguration;
-import org.springframework.social.config.annotation.SocialConfigurer;
-import org.springframework.social.connect.ConnectionFactoryLocator;
-import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.pinterest.api.impl.PinterestTemplate;
-import org.springframework.social.pinterest.connect.PinterestConnectionFactory;
 
 public class BoardsTest {
 
-	String token = "AZNTDA3sbdXlTuq7EmVWV-A2Sx29FCAfWKqyZWlCtluhkKAsGwAAAAA";
+	//insert token
+	String token = "";
 
 	Pinterest pinterest = null;
 
@@ -44,7 +37,7 @@ public class BoardsTest {
 
 	@Test
 	public void patchTest() {
-		final Data<Boards> data = pinterest.boardsOperations().patch("174303516767217601", "변경", "ggg", "");
+		final Data<Boards> data = pinterest.boardsOperations().patch("174303516767217601", "蹂�꼍", "ggg", "");
 		System.out.println(data);
 	}
 

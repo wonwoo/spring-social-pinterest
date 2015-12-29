@@ -12,7 +12,8 @@ import org.springframework.social.pinterest.api.impl.PinterestTemplate;
  */
 public class UserTest {
 
-	String token = "AVC1b4Emnf8rvHTZH4J9gopJZnBVFCCc4WI_YJxCtmEPYoBGWgAAAAA";
+	//insert token
+	String token = "";
 
 	Pinterest pinterest = null;
 

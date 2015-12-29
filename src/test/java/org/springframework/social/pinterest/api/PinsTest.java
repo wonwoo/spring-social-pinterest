@@ -6,7 +6,8 @@ import org.springframework.social.pinterest.api.impl.PinterestTemplate;
 
 public class PinsTest {
 
-	String token = "AZNTDA3sbdXlTuq7EmVWV-A2Sx29FCAfWKqyZWlCtluhkKAsGwAAAAA";
+	//insert token
+	String token = "";
 
 	Pinterest pinterest = null;
 
