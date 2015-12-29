@@ -37,7 +37,7 @@ public class BoardsTest {
 
 	@Test
 	public void patchTest() {
-		final Data<Boards> data = pinterest.boardsOperations().patch("174303516767217601", "蹂�꼍", "ggg", "");
+		final Data<Boards> data = pinterest.boardsOperations().patch("174303516767217601", "변경", "ggg", "");
 		System.out.println(data);
 	}
 
