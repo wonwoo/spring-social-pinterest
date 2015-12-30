@@ -9,7 +9,7 @@ import org.springframework.social.pinterest.api.impl.PinterestTemplate;
 
 public class BoardsTest {
 
-	//insert token
+	// insert token
 	String token = "";
 
 	Pinterest pinterest = null;
@@ -31,7 +31,7 @@ public class BoardsTest {
 
 	@Test
 	public void deleteTest() {
-		//pinterest.boardsOperations().delete("174303516767217598");
+		// pinterest.boardsOperations().delete("174303516767217598");
 
 	}
 

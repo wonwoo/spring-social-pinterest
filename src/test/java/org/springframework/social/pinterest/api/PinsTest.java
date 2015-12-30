@@ -6,7 +6,7 @@ import org.springframework.social.pinterest.api.impl.PinterestTemplate;
 
 public class PinsTest {
 
-	//insert token
+	// insert token
 	String token = "";
 
 	Pinterest pinterest = null;
@@ -29,15 +29,13 @@ public class PinsTest {
 		System.out.println(pin);
 	}
 
-
-
 	@Test
 	public void deleteTest() {
-//		pinterest.pinsOperations().delete("174303448056164828");
+		// pinterest.pinsOperations().delete("174303448056164828");
 	}
 
 	@Test
-	public void patchTest(){
+	public void patchTest() {
 		PinsData pinsData = new PinsData();
 		final Data<Pins> patch = pinterest.pinsOperations().patch("174303448056164842", pinsData);
 		System.out.println(patch);
