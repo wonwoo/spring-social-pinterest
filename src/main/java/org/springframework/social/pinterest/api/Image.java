@@ -45,6 +45,10 @@ public class Image {
 	public Original getProfile() {
 		return original;
 	}
+	
+	public Original getSmall() {
+		return original;
+	}
 
 	@JsonSetter(value = "original")
 	public void setOriginal(Original original) {
@@ -55,6 +59,12 @@ public class Image {
 	public void setProfile(Original original) {
 		this.original = original;
 	}
+	
+	@JsonSetter(value = "small")
+	public void setSmall(Original original) {
+		this.original = original;
+	}
+	 
 
 	@Override
 	public String toString() {

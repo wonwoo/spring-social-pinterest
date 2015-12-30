@@ -13,7 +13,7 @@ import org.springframework.social.pinterest.api.impl.PinterestTemplate;
 public class UserTest {
 
 	//insert token
-	String token = "";
+	String token = "Aak6Ne1s--fUgpR3dK1eqzJHYQFNFCSQjZih94RCtmEPYoBGWgAAAAA";
 
 	Pinterest pinterest = null;
 
@@ -24,10 +24,10 @@ public class UserTest {
 
 	@Test
 	public void getMe() {
-		final Data<User> me = pinterest.userOperations().getMe();
+		final Data<User> me = pinterest.userOperations().getMe("id,image(small)");
 		System.out.println(me.getData().getBio());
 		System.out.println(me.getData().getId());
-		System.out.println(me.getData().getImage().getOriginal());
+		System.out.println(me.getData().getImage().getSmall());
 		System.out.println(me);
 	}
 

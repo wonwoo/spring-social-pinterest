@@ -26,18 +26,24 @@ public class PinterestAdapter implements ApiAdapter<Pinterest> {
 
 	@Override
 	public void setConnectionValues(Pinterest pinterest, ConnectionValues values) {
-		Data<User> user = pinterest.userOperations().getMe();
-		values.setProviderUserId(user.getData().getId());
-		values.setProfileUrl(user.getData().getImage().getProfile().getUrl());
-		values.setImageUrl(user.getData().getImage().getProfile().getUrl());
-		values.setDisplayName(user.getData().getFirst_name());
+		Data<User> userData = pinterest.userOperations().getMe();
+		User user = userData.getData();
+		values.setProviderUserId(user.getId());
+		values.setProfileUrl(user.getImage().getProfile().getUrl());
+		values.setImageUrl(user.getImage().getProfile().getUrl());
+		values.setDisplayName(user.getUsername());
 	}
 
 	@Override
 	public UserProfile fetchUserProfile(Pinterest pinterest) {
-		Data<User> profile = pinterest.userOperations().getMe();
-		return new UserProfileBuilder().setName(profile.getData().getFirst_name())
-				.setUsername(profile.getData().getFirst_name()).build();
+		Data<User> profileData = pinterest.userOperations().getMe();
+		User user = profileData.getData();
+		return new UserProfileBuilder().setName(user.getFirst_name())
+				.setFirstName(user.getFirst_name())
+				.setLastName(user.getLast_name())
+				.setId(user.getId())
+				.setUsername(user.getUsername())
+				.build();
 	}
 
 	@Override
