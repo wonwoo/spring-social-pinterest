@@ -1,5 +1,6 @@
 package org.springframework.social.pinterest.api;
 
+import org.springframework.core.io.Resource;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
@@ -8,14 +9,14 @@ public class PinsData {
 	private String board;
 	private String note;
 	private String link;
-	private String image;
+	private Resource image;
 	private String image_url;
 	private String image_base64;
 
 	public PinsData() {
 	}
 
-	public PinsData(String board, String note, String link, String image, String image_url, String image_base64) {
+	public PinsData(String board, String note, String link, Resource image, String image_url, String image_base64) {
 		super();
 		this.board = board;
 		this.note = note;
@@ -37,7 +38,7 @@ public class PinsData {
 		this.link = link;
 	}
 
-	public void setImage(String image) {
+	public void setImage(Resource image) {
 		this.image = image;
 	}
 
@@ -61,7 +62,7 @@ public class PinsData {
 		return link;
 	}
 
-	public String getImage() {
+	public Resource getImage() {
 		return image;
 	}
 
@@ -86,7 +87,9 @@ public class PinsData {
 		if (image_url != null) {
 			parameters.add("image_url", image_url);
 		}
-		parameters.add("image_base64", image_base64);
+		if(image_base64 != null){
+			parameters.add("image_base64", image_base64);
+		}
 		return parameters;
 	}
 
