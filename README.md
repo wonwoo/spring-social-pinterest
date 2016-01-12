@@ -1,5 +1,4 @@
 # spring-social-pinterest
-spring-social-pinterest
 
 ## spring-social-pinterest 1.0.0 release
 
