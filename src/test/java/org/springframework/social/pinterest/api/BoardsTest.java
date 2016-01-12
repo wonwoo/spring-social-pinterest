@@ -21,7 +21,7 @@ public class BoardsTest {
 
 	@Test
 	public void createTest() {
-		final Data<Boards> me = pinterest.boardsOperations().create("create borad test", "create board description");
+		final Data<Boards> me = pinterest.boardsOperations().create("createiis1", "create board description");
 		System.out.println(me.getData().getCreated_at());
 		System.out.println(me.getData().getCounts());
 		System.out.println(me.getData().getPrivacy());

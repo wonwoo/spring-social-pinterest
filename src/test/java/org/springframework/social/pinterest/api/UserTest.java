@@ -13,7 +13,7 @@ import org.springframework.social.pinterest.api.impl.PinterestTemplate;
 public class UserTest {
 
 	// insert token
-	String token = "Aak6Ne1s--fUgpR3dK1eqzJHYQFNFCSQjZih94RCtmEPYoBGWgAAAAA";
+	String token = "";
 
 	Pinterest pinterest = null;
 
@@ -83,13 +83,13 @@ public class UserTest {
 
 	@Test
 	public void followingBoards() {
-		final Data<String> boards = pinterest.userOperations().followingBoards("522065850493445232");
+		final Data<String> boards = pinterest.userOperations().followingBoards("174303516767217536");
 		System.out.println(boards);
 	}
 
 	@Test
 	public void unfollowingBoards() {
-		pinterest.userOperations().unfollowingBoards("522065850493445232");
+		pinterest.userOperations().unfollowingBoards("174303516767217536");
 	}
 
 	@Test

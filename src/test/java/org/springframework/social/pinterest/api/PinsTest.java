@@ -7,7 +7,7 @@ import org.springframework.social.pinterest.api.impl.PinterestTemplate;
 public class PinsTest {
 
 	// insert token
-	String token = "Abb9k7_nRxxCdEIIy9ZXACg61UFhFCiqWSM6AsJCtmEPYoBGWgAAAAA";
+	String token = "";
 
 	Pinterest pinterest = null;
 
@@ -22,7 +22,7 @@ public class PinsTest {
 		pinsData.setBoard("174303516767217394");
 		pinsData.setNote("pin create");
 		pinsData.setLink("http://google.co.kr");
-//		pinsData.setImage_url("http://www.menucool.com//slider/jsImgSlider/images/image-slider-2.jpg");
+		pinsData.setImage_url("http://www.menucool.com//slider/jsImgSlider/images/image-slider-2.jpg");
 //		Resource resource = new FileSystemResource("C:\\Users\\Public\\Pictures\\Sample Pictures\\apple_PNG13.png");
 //		pinsData.setImage(resource);
 		Data<Pins> pin = pinterest.pinsOperations().create(pinsData);

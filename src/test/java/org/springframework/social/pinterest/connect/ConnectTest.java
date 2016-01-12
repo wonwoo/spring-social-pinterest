@@ -44,10 +44,10 @@ public class ConnectTest {
     @Test
     public void accessTokenTest() throws IOException {
         //insert result code
-        String code = "";
-        OAuth2Operations oAuth2Operations = pinterestConnectionFactory.getOAuthOperations();
-        AccessGrant accessGrant = oAuth2Operations.exchangeForAccess(code, "https://localhost:8080/pinterest/callback", null);
-        printAcess(accessGrant);
+//        String code = "";
+//        OAuth2Operations oAuth2Operations = pinterestConnectionFactory.getOAuthOperations();
+//        AccessGrant accessGrant = oAuth2Operations.exchangeForAccess(code, "https://localhost:8080/pinterest/callback", null);
+//        printAcess(accessGrant);
     }
 
     private void printAcess(AccessGrant accessGrant) throws IOException {

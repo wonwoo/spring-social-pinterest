@@ -166,7 +166,7 @@
 			<plugin>
 				<groupId>com.github.github</groupId>
 				<artifactId>site-maven-plugin</artifactId>
-				<version>0.9</version>
+				<version>0.12</version>
 				<configuration>
 					<message>Maven artifacts for ${project.version}</message>
 					<noJekyll>true</noJekyll>
@@ -176,8 +176,8 @@
 					<includes>
 						<include>**/*</include>
 					</includes>
-					<repositoryName>pengyifan-commons</repositoryName>
-					<repositoryOwner>yfpeng</repositoryOwner>
+					<repositoryName>spring-social-pinterest</repositoryName>
+					<repositoryOwner>wonwoo</repositoryOwner>
 					<server>github</server>
 				</configuration>
 				<executions>
@@ -185,7 +185,7 @@
 						<goals>
 							<goal>site</goal>
 						</goals>
-						<phase>deploy</phase>
+						<phase>site</phase>
 					</execution>
 				</executions>
 			</plugin>
@@ -211,6 +211,9 @@
 						<goals>
 							<goal>jar</goal>
 						</goals>
+						<configuration>
+							<additionalparam>-Xdoclint:none</additionalparam>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
