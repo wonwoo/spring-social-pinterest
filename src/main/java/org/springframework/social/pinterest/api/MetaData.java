@@ -6,58 +6,52 @@ import java.util.Map;
 //https://developers.pinterest.com/docs/rich-pins/overview/ 
 //reference
 public class MetaData {
-	// private Place place;
-	// private Link link;
+    // private Place place;
+    // private Link link;
 
-	private Map<String, Object> article;
-	private Map<String, Object> movie;
-	private Map<String, Object> place;
-	private Map<String, Object> product;
-	private Map<String, Object> pecipe;
-	private Map<String, Object> link;
+    private Map<String, Object> article;
+    private Map<String, Object> movie;
+    private Map<String, Object> place;
+    private Map<String, Object> product;
+    private Map<String, Object> pecipe;
+    private Map<String, Object> link;
 
-	public Map<String, Object> getArticle() {
-		return article;
-	}
+    public Map<String, Object> getArticle() {
+        return article;
+    }
 
-	public Map<String, Object> getMovie() {
-		return movie;
-	}
+    public Map<String, Object> getMovie() {
+        return movie;
+    }
 
-	public Map<String, Object> getPlace() {
-		return place;
-	}
+    public Map<String, Object> getPlace() {
+        return place;
+    }
 
-	public Map<String, Object> getProduct() {
-		return product;
-	}
+    public Map<String, Object> getProduct() {
+        return product;
+    }
 
-	public Map<String, Object> getPecipe() {
-		return pecipe;
-	}
+    public Map<String, Object> getPecipe() {
+        return pecipe;
+    }
 
-	public Map<String, Object> getLink() {
-		return link;
-	}
+    public Map<String, Object> getLink() {
+        return link;
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("MetaData [article=");
-		builder.append(article);
-		builder.append(", movie=");
-		builder.append(movie);
-		builder.append(", place=");
-		builder.append(place);
-		builder.append(", product=");
-		builder.append(product);
-		builder.append(", pecipe=");
-		builder.append(pecipe);
-		builder.append(", link=");
-		builder.append(link);
-		builder.append("]");
-		return builder.toString();
-	}
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("MetaData{");
+        sb.append("article=").append(article);
+        sb.append(", movie=").append(movie);
+        sb.append(", place=").append(place);
+        sb.append(", product=").append(product);
+        sb.append(", pecipe=").append(pecipe);
+        sb.append(", link=").append(link);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 //

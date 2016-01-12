@@ -48,24 +48,16 @@ public class Counts {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Counts [pins=");
-		builder.append(pins);
-		builder.append(", following=");
-		builder.append(following);
-		builder.append(", followers=");
-		builder.append(followers);
-		builder.append(", boards=");
-		builder.append(boards);
-		builder.append(", likes=");
-		builder.append(likes);
-		builder.append(", collaborators=");
-		builder.append(collaborators);
-		builder.append(", comments=");
-		builder.append(comments);
-		builder.append(", repins=");
-		builder.append(repins);
-		builder.append("]");
-		return builder.toString();
+		final StringBuffer sb = new StringBuffer("Counts{");
+		sb.append("boards=").append(boards);
+		sb.append(", pins=").append(pins);
+		sb.append(", following=").append(following);
+		sb.append(", followers=").append(followers);
+		sb.append(", likes=").append(likes);
+		sb.append(", collaborators=").append(collaborators);
+		sb.append(", comments=").append(comments);
+		sb.append(", repins=").append(repins);
+		sb.append('}');
+		return sb.toString();
 	}
 }

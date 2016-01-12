@@ -64,7 +64,7 @@ public class Boards {
         sb.append(", url='").append(url).append('\'');
         sb.append(", name='").append(name).append('\'');
         sb.append(", created_at='").append(created_at).append('\'');
-        sb.append(", creator='").append(creator).append('\'');
+        sb.append(", creator=").append(creator);
         sb.append(", description='").append(description).append('\'');
         sb.append(", image=").append(image);
         sb.append(", privacy='").append(privacy).append('\'');

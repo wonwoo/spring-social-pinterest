@@ -3,113 +3,99 @@ package org.springframework.social.pinterest.api;
 import java.io.Serializable;
 import java.util.Map;
 
-public class Pins extends PinterestObject implements Serializable{
+public class Pins extends PinterestObject implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	private Map<String,String> attribution;
-	private Creator creator;
-	private String url;
-	private Media media;
-	private String created_at;
-	private String original_link;
-	private String note;
-	private String color;
-	private String link;
-	private Boards board;
-	private Image image;
-	private Counts counts;
-	private String id;
-	private MetaData metadata;
+    private static final long serialVersionUID = 1L;
 
-	public Map<String,String> getAttribution() {
-		return attribution;
-	}
+    private Map<String, String> attribution;
+    private Creator creator;
+    private String url;
+    private Media media;
+    private String created_at;
+    private String original_link;
+    private String note;
+    private String color;
+    private String link;
+    private Boards board;
+    private Image image;
+    private Counts counts;
+    private String id;
+    private MetaData metadata;
 
-	public Creator getCreator() {
-		return creator;
-	}
+    public Map<String, String> getAttribution() {
+        return attribution;
+    }
 
-	public String getUrl() {
-		return url;
-	}
+    public Creator getCreator() {
+        return creator;
+    }
 
-	public Media getMedia() {
-		return media;
-	}
+    public String getUrl() {
+        return url;
+    }
 
-	public String getCreated_at() {
-		return created_at;
-	}
+    public Media getMedia() {
+        return media;
+    }
 
-	public String getOriginal_link() {
-		return original_link;
-	}
+    public String getCreated_at() {
+        return created_at;
+    }
 
-	public String getNote() {
-		return note;
-	}
+    public String getOriginal_link() {
+        return original_link;
+    }
 
-	public String getColor() {
-		return color;
-	}
+    public String getNote() {
+        return note;
+    }
 
-	public String getLink() {
-		return link;
-	}
+    public String getColor() {
+        return color;
+    }
 
-	public Boards getBoard() {
-		return board;
-	}
+    public String getLink() {
+        return link;
+    }
 
-	public Image getImage() {
-		return image;
-	}
+    public Boards getBoard() {
+        return board;
+    }
 
-	public Counts getCounts() {
-		return counts;
-	}
+    public Image getImage() {
+        return image;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public Counts getCounts() {
+        return counts;
+    }
 
-	public MetaData getMetadata() {
-		return metadata;
-	}
+    public String getId() {
+        return id;
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Pins [attribution=");
-		builder.append(attribution);
-		builder.append(", creator=");
-		builder.append(creator);
-		builder.append(", url=");
-		builder.append(url);
-		builder.append(", media=");
-		builder.append(media);
-		builder.append(", created_at=");
-		builder.append(created_at);
-		builder.append(", original_link=");
-		builder.append(original_link);
-		builder.append(", note=");
-		builder.append(note);
-		builder.append(", color=");
-		builder.append(color);
-		builder.append(", link=");
-		builder.append(link);
-		builder.append(", board=");
-		builder.append(board);
-		builder.append(", image=");
-		builder.append(image);
-		builder.append(", counts=");
-		builder.append(counts);
-		builder.append(", id=");
-		builder.append(id);
-		builder.append(", metadata=");
-		builder.append(metadata);
-		builder.append("]");
-		return builder.toString();
-	}
+    public MetaData getMetadata() {
+        return metadata;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Pins{");
+        sb.append("attribution=").append(attribution);
+        sb.append(", creator=").append(creator);
+        sb.append(", url='").append(url).append('\'');
+        sb.append(", media=").append(media);
+        sb.append(", created_at='").append(created_at).append('\'');
+        sb.append(", original_link='").append(original_link).append('\'');
+        sb.append(", note='").append(note).append('\'');
+        sb.append(", color='").append(color).append('\'');
+        sb.append(", link='").append(link).append('\'');
+        sb.append(", board=").append(board);
+        sb.append(", image=").append(image);
+        sb.append(", counts=").append(counts);
+        sb.append(", id='").append(id).append('\'');
+        sb.append(", metadata=").append(metadata);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -1,10 +1,10 @@
 package org.springframework.social.pinterest.api;
 
-import java.net.URI;
-
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
+
+import java.net.URI;
 
 /**
  * Created by wonwoo on 15. 12. 15..

@@ -10,11 +10,9 @@ public class Media {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Media [type=");
-		builder.append(type);
-		builder.append("]");
-		return builder.toString();
+		final StringBuffer sb = new StringBuffer("Media{");
+		sb.append("type='").append(type).append('\'');
+		sb.append('}');
+		return sb.toString();
 	}
-
 }

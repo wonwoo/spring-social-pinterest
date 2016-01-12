@@ -76,8 +76,12 @@ public class PinsData {
 
 	public MultiValueMap<String, Object> toRequestParameters() {
 		MultiValueMap<String, Object> parameters = new LinkedMultiValueMap<String, Object>();
-		parameters.add("board", board);
-		parameters.add("note", note);
+		if(board != null){
+			parameters.add("board", board);
+		}
+		if(note != null){
+			parameters.add("note", note);
+		}
 		if (link != null) {
 			parameters.add("link", link);
 		}

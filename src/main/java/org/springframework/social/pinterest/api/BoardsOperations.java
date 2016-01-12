@@ -145,15 +145,32 @@ public interface BoardsOperations {
 	Data<List<Pins>> getPinCursor(String board, String cursor, Integer limit, String fields);
 
 	/**
-	 * 
+	 * <strong>board update</strong><br>
 	 * @param board
 	 * @param name
 	 * @param description
 	 * @param fields
 	 * @return
 	 */
-	// TODO 501 error
+	//
 	Data<Boards> patch(String board, String name, String description, String fields);
+
+	/**
+	 * <strong>board update</strong><br>
+	 * @param board
+	 * @param name
+	 * @param description
+	 * @return
+	 */
+	Data<Boards> patch(String board, String name, String description);
+
+	/**
+	 * <strong>board update</strong><br>
+	 * @param board
+	 * @param name
+	 * @return
+	 */
+	Data<Boards> patch(String board, String name);
 	
 	
 	/**

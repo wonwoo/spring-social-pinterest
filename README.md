@@ -1,14 +1,13 @@
 # spring-social-pinterest
-spring-social-pinterest  
+spring-social-pinterest
+
+## spring-social-pinterest 1.0.0 release
+
 ```xml
 <repositories>
 	<repository>
 		<id>spring-social-pinterest-mvn-repo</id>
 		<url>https://raw.github.com/wonwoo/spring-social-pinterest/mvn-repo/</url>
-		<snapshots>
-			<enabled>true</enabled>
-			<updatePolicy>always</updatePolicy>
-		</snapshots>
 	</repository>
 </repositories>
 
@@ -16,14 +15,9 @@ spring-social-pinterest
 <dependency>
 	<groupId>org.springframework.social</groupId>
 	<artifactId>spring-social-pinterest</artifactId>
-	<version>0.9.0-RELEASE</version>
+	<version>1.0.0-RELEASE</version>
 </dependency>
 
 ```
 
 
-## Issues
- patch method not working pinterest bug
- - Edit a Board
- - Edit a Pin's information
- 

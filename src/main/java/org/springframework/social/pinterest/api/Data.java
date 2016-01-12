@@ -18,13 +18,10 @@ public class Data<T> {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Data [data=");
-		builder.append(data);
-		builder.append(", page=");
-		builder.append(page);
-		builder.append("]");
-		return builder.toString();
+		final StringBuffer sb = new StringBuffer("Data{");
+		sb.append("data=").append(data);
+		sb.append(", page=").append(page);
+		sb.append('}');
+		return sb.toString();
 	}
-
 }
