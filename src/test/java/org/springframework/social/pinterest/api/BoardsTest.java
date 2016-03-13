@@ -21,7 +21,7 @@ public class BoardsTest {
 
 	@Test
 	public void createTest() {
-		final Data<Boards> me = pinterest.boardsOperations().create("createiis1", "create board description");
+		final Data<Boards> me = pinterest.boardsOperations().create("crboard", "create board description");
 		System.out.println(me.getData().getCreated_at());
 		System.out.println(me.getData().getCounts());
 		System.out.println(me.getData().getPrivacy());
@@ -37,7 +37,7 @@ public class BoardsTest {
 
 	@Test
 	public void patchTest() {
-		final Data<Boards> data = pinterest.boardsOperations().patch("174303516767217536", "patchTest");
+		final Data<Boards> data = pinterest.boardsOperations().patch("522065850493473758", "patchTest");
 		System.out.println(data);
 	}
 

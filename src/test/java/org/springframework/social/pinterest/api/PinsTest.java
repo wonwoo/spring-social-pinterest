@@ -19,7 +19,7 @@ public class PinsTest {
 	@Test
 	public void createTest() {
 		PinsData pinsData = new PinsData();
-		pinsData.setBoard("174303516767217394");
+		pinsData.setBoard("522065850493473758");
 		pinsData.setNote("pin create");
 		pinsData.setLink("http://google.co.kr");
 		pinsData.setImage_url("http://www.menucool.com//slider/jsImgSlider/images/image-slider-2.jpg");
@@ -39,7 +39,7 @@ public class PinsTest {
 		PinsData pinsData = new PinsData();
 		pinsData.setNote("pin patch u000");
 //		pinsData.setLink("http://google.co.kr");
-		final Data<Pins> patch = pinterest.pinsOperations().patch("174303448056273433", pinsData);
+		final Data<Pins> patch = pinterest.pinsOperations().patch("522065781785367027", pinsData);
 		System.out.println(patch);
 
 	}

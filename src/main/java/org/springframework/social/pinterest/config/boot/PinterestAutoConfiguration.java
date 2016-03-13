@@ -37,7 +37,7 @@ public class PinterestAutoConfiguration {
 	@EnableConfigurationProperties(PinterestProperties.class)
 	@ConditionalOnWebApplication
 	protected static class PinterestConfigurerAdapter extends SocialConfigurerAdapter {
-		
+
 		@Autowired
 		private PinterestProperties properties;
 
